@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -26,8 +27,10 @@ interface Props {
 
 const drawerWidth = 240;
 const navItems = ['Inicio', 'Habilidades', 'Contacto'];
+const navItemsHref = ['/', '/skills', '/contact'];
 
 export const NavbarWithDrawer = (props: Props) => {
+    const router = useRouter();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -38,14 +41,14 @@ export const NavbarWithDrawer = (props: Props) => {
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
             <Typography variant="h6" sx={{ my: 2 }}>
-                MUI
+                CV Web
             </Typography>
             <Divider />
             <List>
-                {navItems.map(item => (
+                {navItems.map((item, index) => (
                     <ListItem key={item} disablePadding >
                         <ListItemButton sx={{ textAlign: 'center' }}>
-                            <ListItemText primary={item} />
+                            <ListItemText primary={item} onClick={() => router.push(navItemsHref[index])} />
                         </ListItemButton>
                     </ListItem>
                 ))}
@@ -74,11 +77,16 @@ export const NavbarWithDrawer = (props: Props) => {
                         component="div"
                         sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
                     >
-                        MUI
+                        CV Web
                     </Typography>
                     <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                        {navItems.map((item) => (
-                            <Button key={item} sx={{ color: '#fff' }}>
+                        {navItems.map((item, index) => (
+                            <Button
+                                key={item}
+                                sx={{ color: '#fff', ml: '1rem', fontWeight: 400 }}
+                                variant='text'
+                                onClick={() => router.push(navItemsHref[index])}
+                            >
                                 {item}
                             </Button>
                         ))}
