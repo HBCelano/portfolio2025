@@ -26,8 +26,8 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = ['Inicio', 'Habilidades', 'Contacto'];
-const navItemsHref = ['/', '/skills', '/contact'];
+const navItems = ['Inicio', 'Habilidades', 'Experiencia', 'Contacto'];
+const navItemsHref = ['/', '/skills', '/experience', '/contact'];
 
 export const NavbarWithDrawer = (props: Props) => {
     const router = useRouter();
