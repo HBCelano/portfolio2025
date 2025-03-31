@@ -9,7 +9,7 @@ import { CustomAvatar } from "@/presentation/home/components";
 const Home = () => (
     <Box
         component={'section'}
-        sx={{ marginTop: '2rem' }}
+        sx={{ marginTop: '1rem' }}
         className="flex flex-col justify-center md:flex-row md:justify-around"
     >
         <Box component={'section'}><CustomAvatar /></Box>
