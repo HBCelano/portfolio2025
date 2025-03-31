@@ -11,7 +11,7 @@ import '@fontsource/roboto/700.css';
 import '@fontsource/roboto/800.css';
 import { Box, Toolbar } from "@mui/material";
 import CssBaseline, { ThemeProvider, darkTheme } from '@/presentation/theme/components';
-import { NavbarWithDrawer } from "@/presentation/shared/components";
+import { NavbarWithDrawer, Footer } from "@/presentation/shared/components";
 
 // const geistSans = Geist({
 //     variable: "--font-geist-sans",
@@ -67,7 +67,7 @@ export default function RootLayout({
                     </Box>
                     {/* </div> */}
                     {/* </main> */}
-                    <footer></footer>
+                    <Footer />
                     {/* </Box> */}
                 </body>
             </html>
