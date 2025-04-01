@@ -43,32 +43,32 @@ export default function RootLayout({
                 <body
                 // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
                 >
-                    {/* <Box
+                    <Box
                         sx={{
                             minHeight: '100dvh',
                             display: 'flex',
                             flexDirection: 'column'
                         }}
-                    > */}
-                    <header>
-                        <NavbarWithDrawer />
-                    </header>
-                    {/* <main> */}
-                    {/* <div id="main"> */}
-                    <Box
-                        component="main"
-                        sx={{
-                            p: 3
-                            // flex: 1
-                        }}
                     >
-                        <Toolbar />
-                        {children}
+                        <header>
+                            <NavbarWithDrawer />
+                            <Toolbar />
+                        </header>
+                        {/* <main> */}
+                        {/* <div id="main"> */}
+                        <Box
+                            component="main"
+                            sx={{
+                                flex: 1,
+                                p: 3
+                            }}
+                        >
+                            {children}
+                        </Box>
+                        {/* </div> */}
+                        {/* </main> */}
+                        <Footer />
                     </Box>
-                    {/* </div> */}
-                    {/* </main> */}
-                    <Footer />
-                    {/* </Box> */}
                 </body>
             </html>
         </ThemeProvider >

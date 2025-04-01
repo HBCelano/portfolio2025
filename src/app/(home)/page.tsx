@@ -9,11 +9,10 @@ import { CustomAvatar } from "@/presentation/home/components";
 const Home = () => (
     <Box
         component={'section'}
-        sx={{ marginTop: '1rem' }}
         className="flex flex-col justify-center md:flex-row md:justify-around"
     >
         <Box component={'section'}><CustomAvatar /></Box>
-        <Box component={'section'} sx={{ maxWidth: '50%' }}>
+        <Box component={'section'} sx={{ maxWidth: '50%', marginTop: '1rem' }}>
             <Typography variant="h2" className="text-center">
                 Desarrollador Web
                 <br />
