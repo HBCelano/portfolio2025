@@ -13,6 +13,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
+import HomeIcon from '@mui/icons-material/Home';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -20,6 +21,7 @@ import Button from '@mui/material/Button';
 const drawerWidth = 240;
 const navItems = ['Inicio', 'Habilidades', 'Experiencia', 'Contacto'];
 const navItemsHref = ['/', '/skills', '/experience', '/contact'];
+// const navItemsIcons = ['HomeIcon', '/skills', '/experience', '/contact'];
 
 export const NavbarWithDrawer = () => {
     const router = useRouter();
@@ -76,7 +78,10 @@ export const NavbarWithDrawer = () => {
                                 variant='text'
                                 onClick={() => router.push(navItemsHref[index])}
                             >
-                                {item}
+                                <Box component={'div'} sx={{ display: 'flex', alignItems: 'center' }}>
+                                    <HomeIcon color="info" fontSize="medium" style={{ marginRight: 6 }} />
+                                    <p>{item}</p>
+                                </Box>
                             </Button>
                         ))}
                     </Box>
