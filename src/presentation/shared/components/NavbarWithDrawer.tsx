@@ -14,6 +14,9 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
+import HandymanIcon from '@mui/icons-material/Handyman';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import PersonIcon from '@mui/icons-material/Person';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -21,7 +24,13 @@ import Button from '@mui/material/Button';
 const drawerWidth = 240;
 const navItems = ['Inicio', 'Habilidades', 'Experiencia', 'Contacto'];
 const navItemsHref = ['/', '/skills', '/experience', '/contact'];
-// const navItemsIcons = ['HomeIcon', '/skills', '/experience', '/contact'];
+const navItemsIcons = ['HomeIcon', 'HandymanIcon', 'AutoStoriesIcon', 'PersonIcon'];
+const navItemsIconsMapper = {
+    HomeIcon,
+    HandymanIcon,
+    AutoStoriesIcon,
+    PersonIcon
+};
 
 export const NavbarWithDrawer = () => {
     const router = useRouter();
@@ -71,19 +80,24 @@ export const NavbarWithDrawer = () => {
                         CV WEB
                     </Typography>
                     <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                        {navItems.map((item, index) => (
-                            <Button
-                                key={item}
-                                sx={{ color: '#fff', ml: '1rem', fontWeight: 400 }}
-                                variant='text'
-                                onClick={() => router.push(navItemsHref[index])}
-                            >
-                                <Box component={'div'} sx={{ display: 'flex', alignItems: 'center' }}>
-                                    <HomeIcon color="info" fontSize="medium" style={{ marginRight: 6 }} />
-                                    <p>{item}</p>
-                                </Box>
-                            </Button>
-                        ))}
+                        {
+                            navItems.map((item, index) => {
+                                const ComponentIcon: any = navItemsIconsMapper[navItemsIcons[index]];
+                                return (
+                                    <Button
+                                        key={item}
+                                        sx={{ color: '#fff', ml: '1rem', fontWeight: 400 }}
+                                        variant='text'
+                                        onClick={() => router.push(navItemsHref[index])}
+                                    >
+                                        <Box component={'div'} sx={{ display: 'flex', alignItems: 'center' }}>
+                                            <ComponentIcon color="info" fontSize="medium" style={{ marginRight: 6 }} />
+                                            <p>{item}</p>
+                                        </Box>
+                                    </Button>
+                                );
+                            })
+                        }
                     </Box>
                 </Toolbar>
             </AppBar>
