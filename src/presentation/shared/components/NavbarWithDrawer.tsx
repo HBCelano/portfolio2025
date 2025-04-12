@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { ComponentType, useState } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
+import Image from "next/image";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,6 +13,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
+import ListItemIcon from '@mui/material/ListItemIcon';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
 import HandymanIcon from '@mui/icons-material/Handyman';
@@ -20,20 +22,21 @@ import PersonIcon from '@mui/icons-material/Person';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { type SvgIconProps } from '@mui/material/SvgIcon';
 
 const drawerWidth = 240;
-const navItems = ['Inicio', 'Habilidades', 'Experiencia', 'Contacto'];
+const navItems = ['Inicio', 'Habilidades', 'Experiencia', 'Contacto'] as const;
 const navItemsHref = ['/', '/skills', '/experience', '/contact'];
-const navItemsIcons = ['HomeIcon', 'HandymanIcon', 'AutoStoriesIcon', 'PersonIcon'];
-const navItemsIconsMapper = {
-    HomeIcon,
-    HandymanIcon,
-    AutoStoriesIcon,
-    PersonIcon
+const navItemsIcons: Record<typeof navItems[number], ComponentType<SvgIconProps>> = {
+    Inicio: HomeIcon,
+    Habilidades: HandymanIcon,
+    Experiencia: AutoStoriesIcon,
+    Contacto: PersonIcon
 };
 
 export const NavbarWithDrawer = () => {
     const router = useRouter();
+    const pathname = usePathname();
     const [mobileOpen, setMobileOpen] = useState(false);
 
     const handleDrawerToggle = () => {
@@ -41,19 +44,47 @@ export const NavbarWithDrawer = () => {
     };
 
     const drawer = (
-        <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-            <Typography variant="h6" sx={{ my: 2 }}>
-                CV WEB
-            </Typography>
+        <Box onClick={handleDrawerToggle} >
+            <Box
+                component='section'
+                sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    my: 2,
+                    pl: 2
+                }}
+            >
+                <Image
+                    src='/img/cv.svg'
+                    width={35}
+                    height={35}
+                    alt="Logo"
+                />
+                <Typography variant="h6" sx={{ pl: 1, fontWeight: 'light' }}>
+                    HBCelano
+                </Typography>
+            </Box>
             <Divider />
             <List>
-                {navItems.map((item, index) => (
-                    <ListItem key={item} disablePadding >
-                        <ListItemButton sx={{ textAlign: 'center' }}>
-                            <ListItemText primary={item} onClick={() => router.push(navItemsHref[index])} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
+                {
+                    navItems.map((item, index) => {
+                        const IconComponent = navItemsIcons[navItems[index]];
+                        const isActive = pathname === navItemsHref[index];
+                        return (
+                            <ListItem key={item} disablePadding>
+                                <ListItemButton
+                                    onClick={() => router.push(navItemsHref[index])}
+                                    sx={{ color: isActive ? 'primary.main' : 'inherit' }}
+                                >
+                                    <ListItemIcon>
+                                        <IconComponent color={isActive ? 'primary' : 'inherit'} />
+                                    </ListItemIcon>
+                                    <ListItemText primary={item} />
+                                </ListItemButton>
+                            </ListItem>
+                        );
+                    })
+                }
             </List>
         </Box>
     );
@@ -68,32 +99,47 @@ export const NavbarWithDrawer = () => {
                         aria-label="open drawer"
                         edge="start"
                         onClick={handleDrawerToggle}
-                        sx={{ mr: 2, display: { sm: 'none' } }}
+                        sx={{ mr: 2, display: { md: 'none' } }}
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography
-                        variant="h6"
-                        component="div"
-                        sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+                    <Box
+                        component='section'
+                        sx={{
+                            display: { xs: 'none', md: 'flex' },
+                            flexGrow: 1,
+                            alignItems: 'center',
+                            mr: 6
+                        }}
                     >
-                        CV WEB
-                    </Typography>
-                    <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+                        <Image
+                            src='/img/cv.svg'
+                            width={35}
+                            height={35}
+                            alt="Logo"
+                        />
+                        <Typography variant="h6" component="h6" sx={{ pl: 1, fontWeight: 'light' }}>HBCelano</Typography>
+                    </Box>
+                    <Box sx={{ display: { xs: 'none', md: 'block' } }}>
                         {
                             navItems.map((item, index) => {
-                                const ComponentIcon: any = navItemsIconsMapper[navItemsIcons[index]];
+                                const IconComponent = navItemsIcons[navItems[index]];
+                                const isActive = pathname === navItemsHref[index];
                                 return (
                                     <Button
                                         key={item}
-                                        sx={{ color: '#fff', ml: '1rem', fontWeight: 400 }}
+                                        color={isActive ? 'primary' : 'inherit'}
+                                        sx={{
+                                            // color: '#fff',
+                                            ml: '1rem',
+                                            fontWeight: 400,
+                                            borderBottom: isActive ? '2px solid' : 'none',
+                                        }}
                                         variant='text'
                                         onClick={() => router.push(navItemsHref[index])}
+                                        startIcon={<IconComponent color="inherit" fontSize='inherit' />}
                                     >
-                                        <Box component={'div'} sx={{ display: 'flex', alignItems: 'center' }}>
-                                            <ComponentIcon color="info" fontSize="medium" style={{ marginRight: 6 }} />
-                                            <p>{item}</p>
-                                        </Box>
+                                        {item}
                                     </Button>
                                 );
                             })
@@ -110,7 +156,7 @@ export const NavbarWithDrawer = () => {
                         keepMounted: true, // Better open performance on mobile.
                     }}
                     sx={{
-                        display: { xs: 'block', sm: 'none' },
+                        display: { xs: 'block', md: 'none' },
                         '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
                     }}
                 >

@@ -26,7 +26,7 @@ const Home = () => (
                 }}
             >
                 Como desarrollador full-stack, me dedico a convertir ideas en aplicaciones web innovadoras.
-                Explora mis habilidades desde este portfolio y conoce un poco más de mi.
+                Explora mis habilidades desde este portfolio y conoce un poco más sobre mí.
             </Typography>
             <div className="flex gap-x-3 justify-center" style={{ marginTop: '2rem' }}>
                 <Link href={'/experience'}>

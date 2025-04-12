@@ -7,6 +7,7 @@ export const CustomAvatar = () => (
         height={442}
         alt="Avatar o imagen personal"
         style={{ maskImage: "linear-gradient(to bottom, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%)" }}
+        priority
     />
     // <div
     //     style={{
