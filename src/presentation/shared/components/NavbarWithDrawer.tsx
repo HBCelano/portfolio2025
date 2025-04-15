@@ -3,6 +3,7 @@
 import { ComponentType, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Image from "next/image";
+import { useTheme } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -18,7 +19,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
 import HandymanIcon from '@mui/icons-material/Handyman';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
-import PersonIcon from '@mui/icons-material/Person';
+import MarkEmailReadIcon from '@mui/icons-material/MarkEmailRead';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -32,10 +33,11 @@ const navItemsIcons: Record<typeof navItems[number], ComponentType<SvgIconProps>
     Inicio: HomeIcon,
     Habilidades: HandymanIcon,
     Experiencia: AutoStoriesIcon,
-    Contacto: PersonIcon
+    Contacto: MarkEmailReadIcon
 };
 
 export const NavbarWithDrawer = () => {
+    const { palette } = useTheme();
     const router = useRouter();
     const pathname = usePathname();
     const [mobileOpen, setMobileOpen] = useState(false);
@@ -56,7 +58,7 @@ export const NavbarWithDrawer = () => {
                 }}
             >
                 <Image
-                    src='/img/cv.svg'
+                    src={palette.mode === 'dark' ? '/img/cv.svg' : '/img/cv-light.svg'}
                     width={35}
                     height={35}
                     alt="Logo"
@@ -94,7 +96,7 @@ export const NavbarWithDrawer = () => {
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
             <AppBar component="nav">
-                <Toolbar>
+                <Toolbar sx={{ justifyContent: { xs: 'space-between', md: 'flex-start' } }}>
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
@@ -129,7 +131,8 @@ export const NavbarWithDrawer = () => {
                                 return (
                                     <Button
                                         key={item}
-                                        color={isActive ? 'primary' : 'inherit'}
+                                        // color={isActive ? 'primary' : 'inherit'}
+                                        color='inherit'
                                         sx={{
                                             // color: '#fff',
                                             ml: '1rem',
@@ -145,8 +148,8 @@ export const NavbarWithDrawer = () => {
                                 );
                             })
                         }
-                        <ThemeButtonFloating />
                     </Box>
+                    <ThemeButtonFloating />
                 </Toolbar>
             </AppBar>
             <nav>
