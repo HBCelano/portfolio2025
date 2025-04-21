@@ -3,7 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from '@mui/material/styles';
-import { Box, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Tooltip from "@mui/material/Tooltip";
 import Instagram from '@mui/icons-material/Instagram';
 import WhatsApp from '@mui/icons-material/WhatsApp';
 import LinkedIn from '@mui/icons-material/LinkedIn';
@@ -16,10 +18,12 @@ export const Footer = () => {
             component={'footer'}
             sx={{
                 display: 'flex',
+                flexDirection: { xs: 'column', sm: 'row' },
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 padding: '1rem',
-                marginTop: '.8rem'
+                marginTop: '.8rem',
+                gap: { xs: 1, sm: 0 }
             }}
         >
             <Box component='section' sx={{ flex: 1 }}>
@@ -37,15 +41,21 @@ export const Footer = () => {
                 component='section'
                 className="flex flex-1 gap-x-4 justify-end"
             >
-                <Link href='https://web.whatsapp.com/' target="_blank">
-                    <WhatsApp color="success" fontSize="large" />
-                </Link>
-                <Link href='https://www.instagram.com/' target="_blank">
-                    <Instagram color="secondary" fontSize="large" />
-                </Link>
-                <Link href='https://www.linkedin.com/' target="_blank">
-                    <LinkedIn color="primary" fontSize="large" />
-                </Link>
+                <Tooltip title="Ir a WhatsApp" placement="top">
+                    <Link href='https://wa.me/5492352417849' target="_blank">
+                        <WhatsApp color="success" fontSize="large" />
+                    </Link>
+                </Tooltip>
+                <Tooltip title="Ir a Instagram" placement="top">
+                    <Link href='https://www.instagram.com/homecelano/' target="_blank">
+                        <Instagram color="secondary" fontSize="large" />
+                    </Link>
+                </Tooltip>
+                <Tooltip title="Ir a LinkedIn" placement="top">
+                    <Link href='https://linkedin.com/in/hbcelano/' target="_blank">
+                        <LinkedIn color="primary" fontSize="large" />
+                    </Link>
+                </Tooltip>
             </Box>
         </Box>
     );
