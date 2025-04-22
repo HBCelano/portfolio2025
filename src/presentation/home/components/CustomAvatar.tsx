@@ -3,6 +3,7 @@ import Image from 'next/image';
 export const CustomAvatar = () => (
     <Image
         src="/img/avatar380.png"
+        layout='responsive'
         width={380}
         height={442}
         alt="Avatar o imagen personal"

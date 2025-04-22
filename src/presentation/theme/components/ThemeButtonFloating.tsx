@@ -28,10 +28,10 @@ export const ThemeButtonFloating = () => {
         >
             {
                 palette.mode === 'light' ?
-                    <LightModeIcon
+                    <DarkModeIcon
                     // fontSize="small"
                     /> :
-                    <DarkModeIcon
+                    <LightModeIcon
                     // fontSize="small"
                     />
             }
