@@ -10,7 +10,7 @@ import '@fontsource/roboto/600.css';
 import '@fontsource/roboto/700.css';
 import '@fontsource/roboto/800.css';
 import { Box, Toolbar } from "@mui/material";
-import CssBaseline, { ThemeProvider, darkTheme } from '@/presentation/theme/components';
+import CssBaseline, { ThemeProvider, customTheme } from '@/presentation/theme/components';
 import { NavbarWithDrawer, Footer } from "@/presentation/shared/components";
 
 // const geistSans = Geist({
@@ -34,7 +34,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <ThemeProvider theme={darkTheme}>
+        <ThemeProvider theme={customTheme}>
             <CssBaseline />
             <html lang="es">
                 <head>
