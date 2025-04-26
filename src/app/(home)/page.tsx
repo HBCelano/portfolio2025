@@ -21,9 +21,10 @@ const Home = () => {
         <>
             <Box
                 component={'section'}
-                className="flex max-[900px]:flex-col-reverse md:justify-around gap-8"
+                className="flex max-[900px]:flex-col-reverse justify-center gap-10 md:gap-36"
+                sx={{ pt: { md: 4 } }}
             >
-                <Box component={'section'} sx={{ mx: 'auto' }}><CustomAvatar /></Box>
+                <Box component={'section'}><CustomAvatar /></Box>
                 <Box component={'section'} sx={{ maxWidth: { md: '65%', lg: '50%' } }}>
                     <Typography component='h1' variant={isUpBreakpointSM ? 'h2' : 'h3'} fontWeight={isUpBreakpointSM ? 300 : 200} className="text-center">
                         Desarrollador
