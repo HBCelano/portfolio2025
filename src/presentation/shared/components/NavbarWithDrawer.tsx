@@ -26,6 +26,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import SchoolIcon from '@mui/icons-material/School';
 import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
 import HandymanIcon from '@mui/icons-material/Handyman';
+import InfoIcon from '@mui/icons-material/Info';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -72,48 +73,37 @@ export const NavbarWithDrawer = () => {
                     sx: {
                         overflow: 'visible',
                         filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-                        mt: 1.5,
-                        '& .MuiAvatar-root': {
-                            width: 32,
-                            height: 32,
-                            ml: -0.5,
-                            mr: 1,
-                        },
-                        '&::before': {
-                            content: '""',
-                            display: 'block',
-                            position: 'absolute',
-                            top: 0,
-                            right: 14,
-                            width: 10,
-                            height: 10,
-                            bgcolor: 'background.paper',
-                            transform: 'translateY(-50%) rotate(45deg)',
-                            zIndex: 0,
-                        },
-                    },
-                },
+                        mt: 1.5
+                    }
+                }
             }}
             transformOrigin={{ horizontal: 'right', vertical: 'top' }}
             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
         >
-            <MenuItem onClick={handleClose}>
+            <MenuItem onClick={() => router.push('/experience/#study')}>
                 <ListItemIcon>
                     <SchoolIcon fontSize="small" />
                 </ListItemIcon>
                 Estudios
             </MenuItem>
-            <MenuItem onClick={handleClose}>
+            <MenuItem onClick={() => router.push('/experience/#work')}>
                 <ListItemIcon>
                     <WorkHistoryIcon fontSize="small" />
                 </ListItemIcon>
                 Trabajo actual
             </MenuItem>
-            <MenuItem onClick={handleClose}>
+            <MenuItem onClick={() => router.push('/experience/#skills')}>
                 <ListItemIcon>
                     <HandymanIcon fontSize="small" />
                 </ListItemIcon>
                 Habilidades
+            </MenuItem>
+            <Divider />
+            <MenuItem onClick={() => router.push('/experience')}>
+                <ListItemIcon>
+                    <InfoIcon fontSize="small" />
+                </ListItemIcon>
+                Leer todo
             </MenuItem>
         </Menu>
     );
@@ -215,11 +205,11 @@ export const NavbarWithDrawer = () => {
                                             borderBottom: isActive ? '2px solid' : 'none',
                                         }}
                                         variant='text'
-                                        onClick={() => router.push(navItemsHref[index])}
+                                        onClick={event => item === 'Experiencia' ? handleClick(event) : router.push(navItemsHref[index])}
                                         startIcon={<IconComponent color="inherit" fontSize='inherit' />}
                                         endIcon={item === 'Experiencia' ? <KeyboardArrowDownIcon /> : undefined}
-                                        onMouseEnter={item === 'Experiencia' ? handleClick : undefined}
-                                        onMouseLeave={item === 'Experiencia' ? handleClose : undefined}
+                                        // onMouseEnter={item === 'Experiencia' ? handleClick : undefined}
+                                        // onMouseLeave={item === 'Experiencia' ? handleClose : undefined}
                                         aria-controls={(item === 'Experiencia' && open) ? 'experience-menu' : undefined}
                                         aria-haspopup={item === 'Experiencia' ? 'true' : undefined}
                                         aria-expanded={(item === 'Experiencia' && open) ? 'true' : undefined}
