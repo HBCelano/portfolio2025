@@ -1,6 +1,6 @@
 'use client';
 
-import { ComponentType, useState } from 'react';
+import { ComponentType, useState, type MouseEvent } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Image from "next/image";
 import { useTheme } from '@mui/material/styles';
@@ -15,11 +15,17 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
-import HandymanIcon from '@mui/icons-material/Handyman';
+import SourceIcon from '@mui/icons-material/Source';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import MarkEmailReadIcon from '@mui/icons-material/MarkEmailRead';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import SchoolIcon from '@mui/icons-material/School';
+import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
+import HandymanIcon from '@mui/icons-material/Handyman';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -27,12 +33,12 @@ import { type SvgIconProps } from '@mui/material/SvgIcon';
 import { ThemeButtonFloating } from '@/presentation/theme/components';
 
 const drawerWidth = 240;
-const navItems = ['Inicio', 'Habilidades', 'Experiencia', 'Contacto'] as const;
-const navItemsHref = ['/', '/skills', '/experience', '/contact'];
+const navItems = ['Inicio', 'Experiencia', 'Proyectos', 'Contacto'] as const;
+const navItemsHref = ['/', '/experience', '/projects', '/contact'];
 const navItemsIcons: Record<typeof navItems[number], ComponentType<SvgIconProps>> = {
     Inicio: HomeIcon,
-    Habilidades: HandymanIcon,
     Experiencia: AutoStoriesIcon,
+    Proyectos: SourceIcon,
     Contacto: MarkEmailReadIcon
 };
 
@@ -41,10 +47,76 @@ export const NavbarWithDrawer = () => {
     const router = useRouter();
     const pathname = usePathname();
     const [mobileOpen, setMobileOpen] = useState(false);
-
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event: MouseEvent<HTMLElement>) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
     const handleDrawerToggle = () => {
         setMobileOpen(prevState => !prevState);
     };
+
+    const subMenu = (
+        <Menu
+            anchorEl={anchorEl}
+            id="experience-menu"
+            open={open}
+            onClose={handleClose}
+            onClick={handleClose}
+            slotProps={{
+                paper: {
+                    elevation: 0,
+                    sx: {
+                        overflow: 'visible',
+                        filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                        mt: 1.5,
+                        '& .MuiAvatar-root': {
+                            width: 32,
+                            height: 32,
+                            ml: -0.5,
+                            mr: 1,
+                        },
+                        '&::before': {
+                            content: '""',
+                            display: 'block',
+                            position: 'absolute',
+                            top: 0,
+                            right: 14,
+                            width: 10,
+                            height: 10,
+                            bgcolor: 'background.paper',
+                            transform: 'translateY(-50%) rotate(45deg)',
+                            zIndex: 0,
+                        },
+                    },
+                },
+            }}
+            transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+        >
+            <MenuItem onClick={handleClose}>
+                <ListItemIcon>
+                    <SchoolIcon fontSize="small" />
+                </ListItemIcon>
+                Estudios
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+                <ListItemIcon>
+                    <WorkHistoryIcon fontSize="small" />
+                </ListItemIcon>
+                Trabajo actual
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+                <ListItemIcon>
+                    <HandymanIcon fontSize="small" />
+                </ListItemIcon>
+                Habilidades
+            </MenuItem>
+        </Menu>
+    );
 
     const drawer = (
         <Box onClick={handleDrawerToggle} >
@@ -95,7 +167,10 @@ export const NavbarWithDrawer = () => {
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
-            <AppBar component="nav">
+            <AppBar
+                component="nav"
+            // enableColorOnDark
+            >
                 <Toolbar sx={{ justifyContent: { xs: 'space-between', md: 'flex-start' } }}>
                     <IconButton
                         color="inherit"
@@ -142,6 +217,12 @@ export const NavbarWithDrawer = () => {
                                         variant='text'
                                         onClick={() => router.push(navItemsHref[index])}
                                         startIcon={<IconComponent color="inherit" fontSize='inherit' />}
+                                        endIcon={item === 'Experiencia' ? <KeyboardArrowDownIcon /> : undefined}
+                                        onMouseEnter={item === 'Experiencia' ? handleClick : undefined}
+                                        onMouseLeave={item === 'Experiencia' ? handleClose : undefined}
+                                        aria-controls={(item === 'Experiencia' && open) ? 'experience-menu' : undefined}
+                                        aria-haspopup={item === 'Experiencia' ? 'true' : undefined}
+                                        aria-expanded={(item === 'Experiencia' && open) ? 'true' : undefined}
                                     >
                                         {item}
                                     </Button>
@@ -149,6 +230,7 @@ export const NavbarWithDrawer = () => {
                             })
                         }
                     </Box>
+                    {subMenu}
                     <ThemeButtonFloating />
                 </Toolbar>
             </AppBar>
