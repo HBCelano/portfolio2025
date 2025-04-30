@@ -90,7 +90,7 @@ export const NavbarWithDrawer = () => {
                 <ListItemIcon>
                     <WorkHistoryIcon fontSize="small" />
                 </ListItemIcon>
-                Trabajo actual
+                Experiencia Laboral
             </MenuItem>
             <MenuItem onClick={() => router.push('/experience/#skills')}>
                 <ListItemIcon>
