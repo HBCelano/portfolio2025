@@ -7,24 +7,31 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 
 const ProjectCard = ({ imgSrc, title, desc }: { imgSrc: string, title: string, desc?: string }) => (
-    <Card sx={{ maxWidth: 180 }}>
+    <Card sx={{ maxWidth: 220 }}>
         <CardMedia
             component="img"
             alt="Imagen de Habilidad"
             height="50"
             image={imgSrc}
         />
-        <CardContent>
-            <Typography gutterBottom variant="h5" component="h5">
-                {title}
-            </Typography>
-            {desc && <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                {desc}
-            </Typography>}
-        </CardContent>
-        <CardActions>
-            <Button size="small">Leer más</Button>
-        </CardActions>
+        <Box
+            component='section'
+            display='flex'
+            flexDirection='column'
+            justifyContent='space-between'
+        >
+            <CardContent>
+                <Typography gutterBottom variant="h5" component="h5">
+                    {title}
+                </Typography>
+                {desc && <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                    {desc}
+                </Typography>}
+            </CardContent>
+            <CardActions>
+                <Button size="small">Ir al Sitio</Button>
+            </CardActions>
+        </Box>
     </Card>
 );
 
@@ -42,19 +49,59 @@ const Projects = () => (
             }}
         >
             <ProjectCard
-                imgSrc="/img/skills/html5.svg"
-                title="HTML"
-                desc="lorem input so jags koh vla la bla cualquiera desc"
+                imgSrc="/img/projects/simpsons.jpg"
+                title="The Simpsons"
+                desc="Sitio web estático, solo HTML y CSS."
             />
             <ProjectCard
-                imgSrc="/img/skills/css.svg"
-                title="CSS"
-                desc="lorem input so jags koh vla la bla cualquier description input so jags koh vla la bla cualquier desc"
+                imgSrc="/img/projects/todolist.jpg"
+                title="Carga de Tareas"
+                desc="Sitio web estático con HTML, CSS y JS."
             />
             <ProjectCard
-                imgSrc="/img/skills/bootstrap.svg"
-                title="Bootstrap"
-                desc="lorem input"
+                imgSrc="/img/projects/formDeContacto.jpg"
+                title="Formulario de Contacto"
+                desc="Página estática."
+            />
+            <ProjectCard
+                imgSrc="/img/projects/stock.jpg"
+                title="Control de Stock"
+                desc="Sitio estático con JS para controlar stock de productos."
+            />
+            <ProjectCard
+                imgSrc="/img/projects/autos.jpg"
+                title="Filtro de Autos"
+                desc="Sitio para aplicar filtro con JS."
+            />
+            <ProjectCard
+                imgSrc="/img/projects/api-clima.jpg"
+                title="Clima Actual"
+                desc="Sitio web que ofrece el clima actual filtrado por región (consumo de API con JS)."
+            />
+            <ProjectCard
+                imgSrc="/img/projects/portfolio_old.jpg"
+                title="Portfolio Antiguo"
+                desc="Portfolio web estático (versión anterior)."
+            />
+            <ProjectCard
+                imgSrc="/img/projects/pedidos.jpg"
+                title="Pedidos Web"
+                desc="Sistema dinámico de Pedidos Web (PHP y MySQL para manejo de sesiones)."
+            />
+            <ProjectCard
+                imgSrc="/img/projects/helados.jpg"
+                title="Heladería"
+                desc="Sistema web para gestionar pedidos de helados (PHP y MySQL)."
+            />
+            <ProjectCard
+                imgSrc="/img/projects/tickets.jpg"
+                title="Cartelera de Tickets"
+                desc="Sitio web de venta de tickets online (PHP y MySQL)."
+            />
+            <ProjectCard
+                imgSrc="/img/projects/tienda_online.jpg"
+                title="Tienda Online"
+                desc="Tienda online construida con Python (Flask y PostgreSQL)."
             />
         </Box>
     </>

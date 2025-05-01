@@ -4,11 +4,35 @@ import { Study } from "@/presentation/experience/components/Study";
 import { Work } from "@/presentation/experience/components/Work";
 
 const Experience = () => <>
-    <Typography id="study" variant="h2" className="text-center" mt={2}>Estudios</Typography>
+    <Typography
+        id="study"
+        variant="h2"
+        className="text-center"
+        mt={2}
+        sx={{ scrollMarginTop: 75 }}
+    >
+        Estudios
+    </Typography>
     <Study />
-    <Typography id="work" variant="h2" className="text-center" mt={6}>Experiencia Laboral</Typography>
+    <Typography
+        id="work"
+        variant="h2"
+        className="text-center"
+        mt={6}
+        sx={{ scrollMarginTop: 75 }}
+    >
+        Experiencia Laboral
+    </Typography>
     <Work />
-    <Typography id="skills" variant="h2" className="text-center" mt={6}>Habilidades</Typography>
+    <Typography
+        id="skills"
+        variant="h2"
+        className="text-center"
+        mt={6}
+        sx={{ scrollMarginTop: 75 }}
+    >
+        Habilidades
+    </Typography>
     <Skills />
 </>;
 export default Experience;

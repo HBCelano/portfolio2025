@@ -12,7 +12,7 @@ const WorkSection = ({ title, date, subtitle1, subtitle2 }: { title: string, dat
             alignItems='center'
             mb={2}
         >
-            <Typography component='h5' variant='h5' fontWeight={300} className="uppercase">{title}</Typography>
+            <Typography component='h5' variant='h5' fontWeight={200} className="uppercase">{title}</Typography>
             <Typography component='span' variant='body2' color="textSecondary">{date}</Typography>
         </Box>
         <Typography component='h6' variant='h6' fontWeight={400}>{subtitle1}</Typography>
