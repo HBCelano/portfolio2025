@@ -11,9 +11,10 @@ export default function TranslationProvider({
     const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
     useEffect(() => {
-        const savedLang = localStorage.getItem('lang');
-        if (savedLang) i18n.changeLanguage(savedLang);
-        if (i18n.isInitialized) setIsLoaded(true);
+        // const savedLang = localStorage.getItem('lang');
+        const savedLang = 'es';
+        if (savedLang) i18n.changeLanguage(savedLang, () => setIsLoaded(true));
+        // if (i18n.isInitialized) setIsLoaded(true);
     }, []);
 
     if (!isLoaded) return null;
