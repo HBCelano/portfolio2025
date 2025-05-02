@@ -15,10 +15,13 @@
         "@mui/icons-material": "^7.0.0",
         "@mui/material": "^7.0.0",
         "@tailwindcss/postcss": "^4.0.17",
+        "i18next": "^25.0.2",
         "next": "15.2.4",
+        "next-i18next": "^15.4.2",
         "postcss": "^8.5.3",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
+        "react-i18next": "^15.5.1",
         "swiper": "^11.2.6",
         "tailwindcss": "^4.0.17"
     },

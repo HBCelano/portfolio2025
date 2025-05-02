@@ -107,7 +107,7 @@ const SkillCard = ({ imgSrc, title, desc, theme }: { imgSrc: string, title: stri
                 height={120}
                 style={{ filter: mode === 'dark' && theme ? 'invert(1)' : 'none' }}
             />
-            <Typography component='h4' variant='h4' className='text-center' mt={2} fontWeight={200}>{title}</Typography>
+            <Typography component='h4' variant='h5' className='text-center' mt={2} fontWeight={200}>{title}</Typography>
             {desc &&
                 <Typography component='span' variant='body2' color='textSecondary' className='text-center' my={2}>{desc}</Typography>
             }
@@ -123,7 +123,6 @@ const Skills = () => (
             // justifyContent: 'center',
             // flexWrap: 'wrap',
             // gap: 10,
-            px: 10,
             mt: 6
         }}
     >
@@ -136,7 +135,7 @@ const Skills = () => (
                 0: {
                     slidesPerView: 1
                 },
-                300: {
+                350: {
                     slidesPerView: 2
                 },
                 600: {

@@ -1,7 +1,7 @@
 import Typography from "@mui/material/Typography";
-import { Skills } from "@/presentation/experience/components/Skills";
 import { Study } from "@/presentation/experience/components/Study";
 import { Work } from "@/presentation/experience/components/Work";
+import { Skills } from "@/presentation/experience/components/Skills";
 
 const Experience = () => <>
     <Typography
@@ -9,6 +9,7 @@ const Experience = () => <>
         variant="h2"
         className="text-center"
         mt={2}
+        fontWeight={200}
         sx={{ scrollMarginTop: 75 }}
     >
         Estudios
@@ -19,6 +20,7 @@ const Experience = () => <>
         variant="h2"
         className="text-center"
         mt={6}
+        fontWeight={200}
         sx={{ scrollMarginTop: 75 }}
     >
         Experiencia Laboral
@@ -29,6 +31,7 @@ const Experience = () => <>
         variant="h2"
         className="text-center"
         mt={6}
+        fontWeight={200}
         sx={{ scrollMarginTop: 75 }}
     >
         Habilidades

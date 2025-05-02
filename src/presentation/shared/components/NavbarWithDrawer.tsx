@@ -32,6 +32,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { type SvgIconProps } from '@mui/material/SvgIcon';
 import { ThemeButtonFloating } from '@/presentation/theme/components';
+import { LanguageButtonFloating } from '../../language/components/LanguageButtonFloating';
 
 const drawerWidth = 240;
 const navItems = ['Inicio', 'Experiencia', 'Proyectos', 'Contacto'] as const;
@@ -222,6 +223,7 @@ export const NavbarWithDrawer = () => {
                     </Box>
                     {subMenu}
                     <ThemeButtonFloating />
+                    <LanguageButtonFloating />
                 </Toolbar>
             </AppBar>
             <nav>

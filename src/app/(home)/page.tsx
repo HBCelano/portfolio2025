@@ -21,8 +21,8 @@ const Home = () => {
         <>
             <Box
                 component={'section'}
-                className="flex max-[900px]:flex-col-reverse justify-center gap-10 md:gap-36"
-                sx={{ pt: { md: 4 } }}
+                className="flex max-[900px]:flex-col-reverse justify-center items-center gap-10 xl:gap-24"
+                sx={{ pt: { md: 3 } }}
             >
                 <Box component={'section'}><CustomAvatar /></Box>
                 <Box component={'section'} sx={{ maxWidth: { md: '65%', lg: '50%' } }}>
