@@ -13,7 +13,7 @@ export default function TranslationProvider({
     useEffect(() => {
         const savedLang = localStorage.getItem('lang');
         if (savedLang) i18n.changeLanguage(savedLang);
-        setIsLoaded(true);
+        if (i18n.isInitialized) setIsLoaded(true);
     }, []);
 
     if (!isLoaded) return null;
