@@ -10,6 +10,7 @@ import LanguageIcon from '@mui/icons-material/Language';
 import i18n from "@/lib/i18n";
 
 export const LanguageButtonFloating = () => {
+    console.log('hola');
     const [languageLabel, setLanguageLabel] = useState(i18n.language);
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
@@ -39,6 +40,7 @@ export const LanguageButtonFloating = () => {
             }}
             transformOrigin={{ horizontal: 'right', vertical: 'top' }}
             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+            disableScrollLock
         >
             <MenuItem
                 // onClick={async () => {

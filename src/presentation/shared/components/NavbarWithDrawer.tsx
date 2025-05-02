@@ -65,6 +65,8 @@ export const NavbarWithDrawer = () => {
         setMobileOpen(prevState => !prevState);
     };
 
+
+    const subMenuExperience = t('header.navbarWithDrawer.subMenuExperience', { returnObjects: true }) as string[];
     const subMenu = (
         <Menu
             anchorEl={anchorEl}
@@ -84,31 +86,32 @@ export const NavbarWithDrawer = () => {
             }}
             transformOrigin={{ horizontal: 'right', vertical: 'top' }}
             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+            disableScrollLock
         >
             <MenuItem onClick={() => router.push('/experience/#study')}>
                 <ListItemIcon>
                     <SchoolIcon fontSize="small" />
                 </ListItemIcon>
-                Estudios
+                {subMenuExperience[0]}
             </MenuItem>
             <MenuItem onClick={() => router.push('/experience/#work')}>
                 <ListItemIcon>
                     <WorkHistoryIcon fontSize="small" />
                 </ListItemIcon>
-                Experiencia Laboral
+                {subMenuExperience[1]}
             </MenuItem>
             <MenuItem onClick={() => router.push('/experience/#skills')}>
                 <ListItemIcon>
                     <HandymanIcon fontSize="small" />
                 </ListItemIcon>
-                Habilidades
+                {subMenuExperience[2]}
             </MenuItem>
             <Divider />
             <MenuItem onClick={() => router.push('/experience')}>
                 <ListItemIcon>
                     <InfoIcon fontSize="small" />
                 </ListItemIcon>
-                Leer todo
+                {subMenuExperience[3]}
             </MenuItem>
         </Menu>
     );
@@ -210,14 +213,14 @@ export const NavbarWithDrawer = () => {
                                             borderBottom: isActive ? '2px solid' : 'none',
                                         }}
                                         variant='text'
-                                        onClick={event => item === 'Experiencia' ? handleClick(event) : router.push(navItemsHref[index])}
+                                        onClick={event => (item === 'Experiencia' || item === 'Experience') ? handleClick(event) : router.push(navItemsHref[index])}
                                         startIcon={<IconComponent color="inherit" fontSize='inherit' />}
-                                        endIcon={item === 'Experiencia' ? <KeyboardArrowDownIcon /> : undefined}
-                                        // onMouseEnter={item === 'Experiencia' ? handleClick : undefined}
-                                        // onMouseLeave={item === 'Experiencia' ? handleClose : undefined}
-                                        aria-controls={(item === 'Experiencia' && open) ? 'experience-menu' : undefined}
-                                        aria-haspopup={item === 'Experiencia' ? 'true' : undefined}
-                                        aria-expanded={(item === 'Experiencia' && open) ? 'true' : undefined}
+                                        endIcon={(item === 'Experiencia' || item === 'Experience') ? <KeyboardArrowDownIcon /> : undefined}
+                                        // onMouseEnter={(item === 'Experiencia' || item === 'Experience') ? handleClick : undefined}
+                                        // onMouseLeave={(item === 'Experiencia' || item === 'Experience') ? handleClose : undefined}
+                                        aria-controls={((item === 'Experiencia' || item === 'Experience') && open) ? 'experience-menu' : undefined}
+                                        aria-haspopup={(item === 'Experiencia' || item === 'Experience') ? 'true' : undefined}
+                                        aria-expanded={((item === 'Experiencia' || item === 'Experience') && open) ? 'true' : undefined}
                                     >
                                         {item}
                                     </Button>

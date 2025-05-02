@@ -6,7 +6,17 @@
                 "Experience",
                 "Projects",
                 "Contact"
-            ]
+            ],
+            "subMenuExperience": [
+                "Studies",
+                "Work Experience",
+                "Skills",
+                "Read all"
+            ],
+            "themeButton": {
+                "light": "Light Theme",
+                "dark": "Dark Theme"
+            }
         }
     },
     "main": {
