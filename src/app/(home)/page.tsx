@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useTranslation } from 'react-i18next';
 import {
     Box,
     Typography,
@@ -16,6 +17,10 @@ const Home = () => {
     const [open, setOpen] = useState<boolean>(false);
     const theme = useTheme();
     const isUpBreakpointSM = useMediaQuery(theme.breakpoints.up('sm'));
+    const { t, i18n } = useTranslation();
+    useEffect(() => {
+        console.log(i18n.language);
+    }, [i18n.language]);
 
     return (
         <>
@@ -27,9 +32,10 @@ const Home = () => {
                 <Box component={'section'}><CustomAvatar /></Box>
                 <Box component={'section'} sx={{ maxWidth: { md: '65%', lg: '50%' } }}>
                     <Typography component='h1' variant={isUpBreakpointSM ? 'h2' : 'h3'} fontWeight={isUpBreakpointSM ? 300 : 200} className="text-center">
-                        Desarrollador
+                        {t('home.title')}
+                        {/* Desarrollador
                         <br />
-                        Full-Stack
+                        Full-Stack */}
                     </Typography>
                     <Typography
                         component='p'
@@ -40,22 +46,21 @@ const Home = () => {
                         }}
                         className="text-center"
                     >
-                        Como desarrollador full-stack, me dedico a convertir ideas en aplicaciones web ó mobile innovadoras.
-                        Explora mis habilidades desde este portfolio y conoce un poco más sobre mí.
+                        {t('home.body')}
                     </Typography>
                     <div className="flex gap-x-3 justify-center" style={{ marginTop: '2rem' }}>
-                        <Button variant="contained" onClick={() => setOpen(true)}>Conocer más</Button>
+                        <Button variant="contained" onClick={() => setOpen(true)}>{t('home.textButtonAbout')}</Button>
                         <Link href={'/contact'}>
-                            <Button variant="outlined">Contacto</Button>
+                            <Button variant="outlined">{t('home.textButtonContact')}</Button>
                         </Link>
                     </div>
                 </Box>
             </Box >
             <CustomDialog
-                title="Sobre mí"
-                text1="Mi nombre es Homero Celano, vivo en la ciudad de Chacabuco, provincia de Buenos Aires. Me encuentro desarrollando aplicaciones web y móviles hace aproximadamente dos años y aspiro a seguir aprendiendo cada día."
-                text2="Mi mayor objetivo es aplicar mis conocimientos como desarrollador de software y mi experiencia trabajando en equipo, asumiendo nuevos desafíos para lograr un crecimiento a nivel profesional y personal."
-                textButton="Aceptar"
+                title={t('home.modal.title')}
+                text1={t('home.modal.body1')}
+                text2={t('home.modal.body2')}
+                textButton={t('home.modal.textButton')}
                 open={open}
                 handleClose={() => setOpen(false)}
             />

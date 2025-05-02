@@ -1,0 +1,14 @@
+{
+    "home": {
+        "title": "Desarrollador Full-Stack",
+        "body": "Como desarrollador full-stack, me dedico a convertir ideas en aplicaciones web ó mobile innovadoras.Explora mis habilidades desde este portfolio y conoce un poco más sobre mí.",
+        "textButtonAbout": "Conocer más",
+        "textButtonContact": "Contacto",
+        "modal": {
+            "title": "Sobre mí",
+            "body1": "Mi nombre es Homero Celano, vivo en la ciudad de Chacabuco, provincia de Buenos Aires. Me encuentro desarrollando aplicaciones web y móviles hace aproximadamente dos años y aspiro a seguir aprendiendo cada día.",
+            "body2": "Mi mayor objetivo es aplicar mis conocimientos como desarrollador de software y mi experiencia trabajando en equipo, asumiendo nuevos desafíos para lograr un crecimiento a nivel profesional y personal.",
+            "textButton": "Aceptar"
+        }
+    }
+}
