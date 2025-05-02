@@ -3,6 +3,7 @@
 import { ComponentType, useState, type MouseEvent } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Image from "next/image";
+import { useTranslation } from 'react-i18next';
 import { useTheme } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -32,19 +33,22 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { type SvgIconProps } from '@mui/material/SvgIcon';
 import { ThemeButtonFloating } from '@/presentation/theme/components';
-import { LanguageButtonFloating } from '../../language/components/LanguageButtonFloating';
+import { LanguageButtonFloating } from '@/presentation/language/components/LanguageButtonFloating';
 
 const drawerWidth = 240;
-const navItems = ['Inicio', 'Experiencia', 'Proyectos', 'Contacto'] as const;
-const navItemsHref = ['/', '/experience', '/projects', '/contact'];
-const navItemsIcons: Record<typeof navItems[number], ComponentType<SvgIconProps>> = {
-    Inicio: HomeIcon,
-    Experiencia: AutoStoriesIcon,
-    Proyectos: SourceIcon,
-    Contacto: MarkEmailReadIcon
-};
 
 export const NavbarWithDrawer = () => {
+    const { t } = useTranslation();
+
+    const navItems = t('header.navbarWithDrawer.navItems', { returnObjects: true }) as string[];
+    const navItemsHref = ['/', '/experience', '/projects', '/contact'] as const;
+    const navItemsIcons: Record<typeof navItemsHref[number], ComponentType<SvgIconProps>> = {
+        "/": HomeIcon,
+        "/experience": AutoStoriesIcon,
+        "/projects": SourceIcon,
+        "/contact": MarkEmailReadIcon
+    };
+
     const { palette } = useTheme();
     const router = useRouter();
     const pathname = usePathname();
@@ -134,7 +138,7 @@ export const NavbarWithDrawer = () => {
             <List>
                 {
                     navItems.map((item, index) => {
-                        const IconComponent = navItemsIcons[navItems[index]];
+                        const IconComponent = navItemsIcons[navItemsHref[index]];
                         const isActive = pathname === navItemsHref[index];
                         return (
                             <ListItem key={item} disablePadding>
@@ -192,7 +196,7 @@ export const NavbarWithDrawer = () => {
                     <Box sx={{ display: { xs: 'none', md: 'block' } }}>
                         {
                             navItems.map((item, index) => {
-                                const IconComponent = navItemsIcons[navItems[index]];
+                                const IconComponent = navItemsIcons[navItemsHref[index]];
                                 const isActive = pathname === navItemsHref[index];
                                 return (
                                     <Button
@@ -222,8 +226,10 @@ export const NavbarWithDrawer = () => {
                         }
                     </Box>
                     {subMenu}
-                    <ThemeButtonFloating />
-                    <LanguageButtonFloating />
+                    <Box component='div'>
+                        <ThemeButtonFloating />
+                        <LanguageButtonFloating />
+                    </Box>
                 </Toolbar>
             </AppBar>
             <nav>

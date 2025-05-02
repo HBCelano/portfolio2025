@@ -1,14 +1,34 @@
 {
-    "home": {
-        "title": "Full-Stack Developer",
-        "body": "As a full-stack developer, I'm dedicated to turning ideas into innovative web and mobile applications. Explore my skills in this portfolio and learn a little more about me.",
-        "textButtonAbout": "Know more",
-        "textButtonContact": "Contact",
-        "modal": {
-            "title": "About me",
-            "body1": "My name is Homero Celano, I live in the city of Chacabuco, Buenos Aires province. I've been developing web and mobile applications for about two years and I aspire to continue learning every day.",
-            "body2": "My main goal is to apply my knowledge as a software developer and my experience working in a team, taking on new challenges to achieve professional and personal growth.",
-            "textButton": "Ok"
+    "header": {
+        "navbarWithDrawer": {
+            "navItems": [
+                "Home",
+                "Experience",
+                "Projects",
+                "Contact"
+            ]
+        }
+    },
+    "main": {
+        "home": {
+            "title": "Full-Stack Developer",
+            "body": "As a full-stack developer, I'm dedicated to turning ideas into innovative web and mobile applications. Explore my skills in this portfolio and learn a little more about me.",
+            "textButtonAbout": "Know more",
+            "textButtonContact": "Contact",
+            "modal": {
+                "title": "About me",
+                "body1": "My name is Homero Celano, I live in the city of Chacabuco, Buenos Aires province. I've been developing web and mobile applications for about two years and I aspire to continue learning every day.",
+                "body2": "My main goal is to apply my knowledge as a software developer and my experience working in a team, taking on new challenges to achieve professional and personal growth.",
+                "textButton": "Ok"
+            }
+        }
+    },
+    "footer": {
+        "copyright": "All rights reserved.",
+        "tooltips": {
+            "whatsapp": "Go to WhatsApp",
+            "instagram": "Go to Instagram",
+            "linkedIn": "Go to LinkedIn"
         }
     }
 }

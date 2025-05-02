@@ -32,7 +32,7 @@ const Home = () => {
                 <Box component={'section'}><CustomAvatar /></Box>
                 <Box component={'section'} sx={{ maxWidth: { md: '65%', lg: '50%' } }}>
                     <Typography component='h1' variant={isUpBreakpointSM ? 'h2' : 'h3'} fontWeight={isUpBreakpointSM ? 300 : 200} className="text-center">
-                        {t('home.title')}
+                        {t('main.home.title')}
                         {/* Desarrollador
                         <br />
                         Full-Stack */}
@@ -46,21 +46,21 @@ const Home = () => {
                         }}
                         className="text-center"
                     >
-                        {t('home.body')}
+                        {t('main.home.body')}
                     </Typography>
                     <div className="flex gap-x-3 justify-center" style={{ marginTop: '2rem' }}>
-                        <Button variant="contained" onClick={() => setOpen(true)}>{t('home.textButtonAbout')}</Button>
+                        <Button variant="contained" onClick={() => setOpen(true)}>{t('main.home.textButtonAbout')}</Button>
                         <Link href={'/contact'}>
-                            <Button variant="outlined">{t('home.textButtonContact')}</Button>
+                            <Button variant="outlined">{t('main.home.textButtonContact')}</Button>
                         </Link>
                     </div>
                 </Box>
             </Box >
             <CustomDialog
-                title={t('home.modal.title')}
-                text1={t('home.modal.body1')}
-                text2={t('home.modal.body2')}
-                textButton={t('home.modal.textButton')}
+                title={t('main.home.modal.title')}
+                text1={t('main.home.modal.body1')}
+                text2={t('main.home.modal.body2')}
+                textButton={t('main.home.modal.textButton')}
                 open={open}
                 handleClose={() => setOpen(false)}
             />
