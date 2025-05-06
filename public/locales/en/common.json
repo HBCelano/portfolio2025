@@ -1,0 +1,73 @@
+{
+    "header": {
+        "navbarWithDrawer": {
+            "navItems": [
+                "Home",
+                "Experience",
+                "Projects",
+                "Contact"
+            ],
+            "subMenuExperience": [
+                "Studies",
+                "Work Experience",
+                "Skills",
+                "Read all"
+            ],
+            "themeButton": {
+                "light": "Light Theme",
+                "dark": "Dark Theme"
+            }
+        }
+    },
+    "main": {
+        "home": {
+            "title": "Full-Stack Developer",
+            "body": "As a full-stack developer, I'm dedicated to turning ideas into innovative web and mobile applications. Explore my skills in this portfolio and learn a little more about me.",
+            "textButtonAbout": "Know more",
+            "textButtonContact": "Contact",
+            "modal": {
+                "title": "About me",
+                "body1": "My name is Homero Celano, I live in the city of Chacabuco, Buenos Aires province. I've been developing web and mobile applications for about two years and I aspire to continue learning every day.",
+                "body2": "My main goal is to apply my knowledge as a software developer and my experience working in a team, taking on new challenges to achieve professional and personal growth.",
+                "textButton": "Ok"
+            }
+        },
+        "experience": {
+            "studies": {
+                "title": "Studies",
+                "customSectionInfo1": {
+                    "title": "Technician in Systems Analysis",
+                    "date": "March 2023 - Present",
+                    "subtitle1": "Higher Institute of Technical Training No. 132.",
+                    "subtitle2": "Chacabuco, Buenos Aires."
+                },
+                "customSectionInfo2": {
+                    "title": "Full Stack Web Programming Course",
+                    "date": "August 2022 - February 2023",
+                    "subtitle1": "Program From Your Home.",
+                    "subtitle2": "On-line."
+                }
+            },
+            "work": {
+                "title": "Work Experience",
+                "customSectionInfo1": {
+                    "title": "Pampa Software",
+                    "date": "November 2023 - Present",
+                    "subtitle1": "Full-Stack Development of Web and Mobile Applications.",
+                    "subtitle2": "Chacabuco, Buenos Aires."
+                }
+            },
+            "skills": {
+                "title": "Skills"
+            }
+        }
+    },
+    "footer": {
+        "copyright": "All rights reserved.",
+        "tooltips": {
+            "whatsapp": "Go to WhatsApp",
+            "instagram": "Go to Instagram",
+            "linkedIn": "Go to LinkedIn"
+        }
+    }
+}

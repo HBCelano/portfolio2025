@@ -1,0 +1,73 @@
+{
+    "header": {
+        "navbarWithDrawer": {
+            "navItems": [
+                "Inicio",
+                "Experiencia",
+                "Proyectos",
+                "Contacto"
+            ],
+            "subMenuExperience": [
+                "Estudios",
+                "Experiencia Laboral",
+                "Habilidades",
+                "Leer todo"
+            ],
+            "themeButton": {
+                "light": "Tema Claro",
+                "dark": "Tema Oscuro"
+            }
+        }
+    },
+    "main": {
+        "home": {
+            "title": "Desarrollador Full-Stack",
+            "body": "Como desarrollador full-stack, me dedico a convertir ideas en aplicaciones web ó mobile innovadoras. Explora mis habilidades desde este portfolio y conoce un poco más sobre mí.",
+            "textButtonAbout": "Conocer más",
+            "textButtonContact": "Contacto",
+            "modal": {
+                "title": "Sobre mí",
+                "body1": "Mi nombre es Homero Celano, vivo en la ciudad de Chacabuco, provincia de Buenos Aires. Me encuentro desarrollando aplicaciones web y móviles hace aproximadamente dos años y aspiro a seguir aprendiendo cada día.",
+                "body2": "Mi mayor objetivo es aplicar mis conocimientos como desarrollador de software y mi experiencia trabajando en equipo, asumiendo nuevos desafíos para lograr un crecimiento a nivel profesional y personal.",
+                "textButton": "Aceptar"
+            }
+        },
+        "experience": {
+            "studies": {
+                "title": "Estudios",
+                "customSectionInfo1": {
+                    "title": "Tecnicatura en Análisis de Sistemas",
+                    "date": "Marzo 2023 - Actualidad",
+                    "subtitle1": "Instituto Superior de Formación Técnica N° 132.",
+                    "subtitle2": "Chacabuco, Buenos Aires."
+                },
+                "customSectionInfo2": {
+                    "title": "Curso de Programación Web Full Stack",
+                    "date": "Agosto 2022 - Febrero 2023",
+                    "subtitle1": "Programá Desde Tu Casa.",
+                    "subtitle2": "Remoto."
+                }
+            },
+            "work": {
+                "title": "Experiencia Laboral",
+                "customSectionInfo1": {
+                    "title": "Pampa Software",
+                    "date": "Noviembre 2023 - Actualidad",
+                    "subtitle1": "Desarrollo Full Stack de aplicaciones Web | Móviles.",
+                    "subtitle2": "Chacabuco, Buenos Aires."
+                }
+            },
+            "skills": {
+                "title": "Habilidades"
+            }
+        }
+    },
+    "footer": {
+        "copyright": "Todos los derechos reservados.",
+        "tooltips": {
+            "whatsapp": "Ir a WhatsApp",
+            "instagram": "Ir a Instagram",
+            "linkedIn": "Ir a LinkedIn"
+        }
+    }
+}
