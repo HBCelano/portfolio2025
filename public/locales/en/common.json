@@ -31,6 +31,35 @@
                 "body2": "My main goal is to apply my knowledge as a software developer and my experience working in a team, taking on new challenges to achieve professional and personal growth.",
                 "textButton": "Ok"
             }
+        },
+        "experience": {
+            "studies": {
+                "title": "Studies",
+                "customSectionInfo1": {
+                    "title": "Technician in Systems Analysis",
+                    "date": "March 2023 - Present",
+                    "subtitle1": "Higher Institute of Technical Training No. 132.",
+                    "subtitle2": "Chacabuco, Buenos Aires."
+                },
+                "customSectionInfo2": {
+                    "title": "Full Stack Web Programming Course",
+                    "date": "August 2022 - February 2023",
+                    "subtitle1": "Program From Your Home.",
+                    "subtitle2": "On-line."
+                }
+            },
+            "work": {
+                "title": "Work Experience",
+                "customSectionInfo1": {
+                    "title": "Pampa Software",
+                    "date": "November 2023 - Present",
+                    "subtitle1": "Full-Stack Development of Web and Mobile Applications.",
+                    "subtitle2": "Chacabuco, Buenos Aires."
+                }
+            },
+            "skills": {
+                "title": "Skills"
+            }
         }
     },
     "footer": {
