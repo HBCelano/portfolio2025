@@ -1,5 +1,3 @@
-'use client';
-
 import Image from 'next/image';
 import { useTheme } from '@mui/material/styles';
 import Box from "@mui/material/Box";

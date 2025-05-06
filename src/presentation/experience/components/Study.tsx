@@ -1,39 +1,44 @@
+import { useTranslation } from "react-i18next";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import { CustomSectionInfo } from "./CustomSectionInfo";
 
-const Study = () => (
-    <Box
-        component='section'
-        sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            mt: 4
-        }}
-    >
+const Study = () => {
+    const { t } = useTranslation();
+
+    return (
         <Box
             component='section'
-            display='flex'
-            flexDirection='column'
-            p={2}
-            className="border-1 border-gray-400 rounded-lg gap-4"
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                mt: 4
+            }}
         >
-            <CustomSectionInfo
-                title="Tecnicatura en Análisis de Sistemas"
-                date="Marzo 2023 - Actualidad"
-                subtitle1="Instituto Superior de Formación Técnica N° 132."
-                subtitle2="Chacabuco, Buenos Aires."
-            />
-            <Divider />
-            <CustomSectionInfo
-                title="Curso de Programación Web Full Stack"
-                date="Agosto 2022 - Febrero 2023"
-                subtitle1="Programá Desde Tu Casa."
-                subtitle2="Online."
-            />
+            <Box
+                component='section'
+                display='flex'
+                flexDirection='column'
+                p={2}
+                className="border-1 border-gray-400 rounded-lg gap-4"
+            >
+                <CustomSectionInfo
+                    title={t('main.experience.studies.customSectionInfo1.title')}
+                    date={t('main.experience.studies.customSectionInfo1.date')}
+                    subtitle1={t('main.experience.studies.customSectionInfo1.subtitle1')}
+                    subtitle2={t('main.experience.studies.customSectionInfo1.subtitle2')}
+                />
+                <Divider />
+                <CustomSectionInfo
+                    title={t('main.experience.studies.customSectionInfo2.title')}
+                    date={t('main.experience.studies.customSectionInfo2.date')}
+                    subtitle1={t('main.experience.studies.customSectionInfo2.subtitle1')}
+                    subtitle2={t('main.experience.studies.customSectionInfo2.subtitle2')}
+                />
+            </Box>
         </Box>
-    </Box>
-);
+    );
+};
 
 export { Study };

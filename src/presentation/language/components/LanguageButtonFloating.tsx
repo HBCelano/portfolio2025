@@ -46,7 +46,9 @@ export const LanguageButtonFloating = () => {
                 //     await i18n.changeLanguage(i18n.language === 'es' ? 'en' : 'es');
                 //     setLanguageLabel(i18n.language);
                 // }}
-                onClick={() => i18n.changeLanguage('es', () => setLanguageLabel(i18n.language))}>
+                onClick={() => i18n.changeLanguage('es', () => setLanguageLabel(i18n.language))}
+                className="gap-x-2"
+            >
                 <ListItemIcon>
                     <Image
                         src='/img/languages/es.svg'
@@ -55,14 +57,16 @@ export const LanguageButtonFloating = () => {
                         height={8}
                         style={{
                             width: 'auto',
-                            height: 'auto',
-                            marginRight: 5
+                            height: 'auto'
                         }}
                     />
                 </ListItemIcon>
                 {languageLabel === 'es' ? 'Español' : 'Spanish'}
             </MenuItem>
-            <MenuItem onClick={() => i18n.changeLanguage('en', () => setLanguageLabel(i18n.language))}>
+            <MenuItem
+                onClick={() => i18n.changeLanguage('en', () => setLanguageLabel(i18n.language))}
+                className="gap-x-2"
+            >
                 <ListItemIcon>
                     <Image
                         src='/img/languages/en.svg'
@@ -71,8 +75,7 @@ export const LanguageButtonFloating = () => {
                         height={8}
                         style={{
                             width: 'auto',
-                            height: 'auto',
-                            marginRight: 5
+                            height: 'auto'
                         }}
                     />
                 </ListItemIcon>
