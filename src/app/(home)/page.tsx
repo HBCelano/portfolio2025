@@ -1,14 +1,16 @@
 'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, forwardRef } from "react";
 import Link from "next/link";
 import { useTranslation } from 'react-i18next';
+import { motion, type MotionProps } from 'framer-motion';
 import {
     Box,
     Typography,
     Button,
     useTheme,
-    useMediaQuery
+    useMediaQuery,
+    type BoxProps
 } from "@mui/material";
 import { CustomAvatar } from "@/presentation/home/components";
 import { CustomDialog } from "@/presentation/shared/components";
@@ -18,19 +20,38 @@ const Home = () => {
     const theme = useTheme();
     const isUpBreakpointSM = useMediaQuery(theme.breakpoints.up('sm'));
     const { t, i18n } = useTranslation();
+
     useEffect(() => {
         console.log(i18n.language);
     }, [i18n.language]);
 
+    // const MotionBox = motion.create(Box);
+    const MotionBoxForwardRef = forwardRef<HTMLElement, MotionProps & BoxProps>((props, ref) => <Box ref={ref} {...props} />);
+    MotionBoxForwardRef.displayName = 'MotionBox';
+    const MotionBox = motion.create(MotionBoxForwardRef);
+
     return (
         <>
             <Box
-                component={'section'}
+                component='section'
                 className="flex max-[900px]:flex-col-reverse justify-center items-center gap-10 xl:gap-24"
                 sx={{ pt: { md: 3 } }}
             >
-                <Box component={'section'}><CustomAvatar /></Box>
-                <Box component={'section'} sx={{ maxWidth: { md: '65%', lg: '50%' } }}>
+                <MotionBox
+                    component={'section'}
+                    initial={{ x: '-100vw', opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 1 }}
+                >
+                    <CustomAvatar />
+                </MotionBox>
+                <MotionBox
+                    // component={'section'}
+                    sx={{ maxWidth: { md: '65%', lg: '50%' } }}
+                    initial={{ x: '100vw', opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 1 }}
+                >
                     <Typography component='h1' variant={isUpBreakpointSM ? 'h2' : 'h3'} fontWeight={isUpBreakpointSM ? 300 : 200} className="text-center">
                         {t('main.home.title')}
                         {/* Desarrollador
@@ -54,7 +75,7 @@ const Home = () => {
                             <Button variant="outlined">{t('main.home.textButtonContact')}</Button>
                         </Link>
                     </div>
-                </Box>
+                </MotionBox>
             </Box >
             <CustomDialog
                 title={t('main.home.modal.title')}

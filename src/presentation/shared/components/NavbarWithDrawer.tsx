@@ -65,7 +65,6 @@ export const NavbarWithDrawer = () => {
         setMobileOpen(prevState => !prevState);
     };
 
-
     const subMenuExperience = t('header.navbarWithDrawer.subMenuExperience', { returnObjects: true }) as string[];
     const subMenu = (
         <Menu

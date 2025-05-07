@@ -16,6 +16,7 @@
         "@mui/icons-material": "^7.0.0",
         "@mui/material": "^7.0.0",
         "@tailwindcss/postcss": "^4.0.17",
+        "framer-motion": "^12.10.1",
         "i18next": "^25.0.2",
         "i18next-http-backend": "^3.0.2",
         "next": "15.2.4",
