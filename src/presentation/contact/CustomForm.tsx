@@ -7,6 +7,11 @@ import Divider from '@mui/material/Divider';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import MuiCard from '@mui/material/Card';
+import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
+import GmailSVG from 'root/public/img/contact/gmail.svg';
+// import WhatsAppSVG from 'root/public/img/contact/whatsapp.svg';
+// import InstagramSVG from 'root/public/img/contact/instagram.svg';
+// import LinkedInSVG from 'root/public/img/contact/linkedin.svg';
 
 const Card = styled(MuiCard)(({ theme }) => ({
     display: 'flex',
@@ -40,7 +45,7 @@ export function CustomForm() {
         let isValid = true;
         if (!name.value) {
             setNameError(true);
-            setNameErrorMessage('Password must be at least 6 characters long.');
+            setNameErrorMessage('Debe ingresar un nombre válido.');
             isValid = false;
         } else {
             setNameError(false);
@@ -149,17 +154,27 @@ export function CustomForm() {
                     fullWidth
                     variant="contained"
                     onClick={validateInputs}
-                // startIcon={ }
+                    startIcon={<ArrowForwardOutlinedIcon />}
                 >
                     Enviar
                 </Button>
             </Box>
-            <Divider>Redes</Divider>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <Divider>Gmail</Divider>
+            <Box
+            // sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
+            >
                 <Button
                     fullWidth
                     variant="outlined"
-                    // startIcon={ }
+                    startIcon={<GmailSVG width={30} height={30} />}
+                    onClick={() => { }}
+                >
+                    Enviar por Gmail
+                </Button>
+                {/* <Button
+                    fullWidth
+                    variant="outlined"
+                    startIcon={<WhatsAppSVG width={30} height={30} />}
                     onClick={() => { }}
                 >
                     Ir a WhatsApp
@@ -167,7 +182,7 @@ export function CustomForm() {
                 <Button
                     fullWidth
                     variant="outlined"
-                    // startIcon={ }
+                    startIcon={<InstagramSVG width={30} height={30} />}
                     onClick={() => { }}
                 >
                     Ir a Instagram
@@ -175,11 +190,11 @@ export function CustomForm() {
                 <Button
                     fullWidth
                     variant="outlined"
-                    // startIcon={ }
+                    startIcon={<LinkedInSVG width={30} height={30} />}
                     onClick={() => { }}
                 >
                     Ir a LinkedIn
-                </Button>
+                </Button> */}
             </Box>
         </Card>
     );

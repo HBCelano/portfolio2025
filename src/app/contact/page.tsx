@@ -41,7 +41,7 @@ const Contact = () => {
                 <Typography
                     component='p'
                     variant={isUpBreakpointSM ? 'h6' : 'subtitle1'}
-                    sx={{ marginTop: '2rem', fontWeight: 'light' }}
+                    sx={{ marginTop: '1rem', fontWeight: 'light' }}
                     gutterBottom
                 // className="text-center"
                 >
@@ -78,16 +78,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
-// animate={{
-//     // x: 0,
-//     // opacity: 1,
-//     backgroundColor: ['#2196f3', '#4caf50', '#ff9800', '#e91e63', '#2196f3']
-// }}
-// // transition={{ duration: 1 }}
-// transition={{
-//     duration: 10,
-//     repeat: Infinity,
-//     repeatType: 'loop',
-//     ease: 'linear',
-// }}
