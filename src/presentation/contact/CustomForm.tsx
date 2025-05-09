@@ -164,10 +164,13 @@ export function CustomForm() {
             // sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
             >
                 <Button
-                    fullWidth
+                    LinkComponent='a'
+                    href='https://mail.google.com/mail/?view=cm&fs=1&to=benjaminncelano@gmail.com&su=Consulta&body=Cuerpo%20del%20mensaje'
+                    target='_blank'
+                    rel='noreferrer'
                     variant="outlined"
+                    fullWidth
                     startIcon={<GmailSVG width={30} height={30} />}
-                    onClick={() => { }}
                 >
                     Enviar por Gmail
                 </Button>

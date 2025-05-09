@@ -14,7 +14,11 @@ import '@fontsource/roboto/800.css';
 import { Box, Toolbar } from "@mui/material";
 import TranslationProvider from "@/presentation/language/components/TranslationProvider";
 import CssBaseline, { ThemeProvider, customTheme } from '@/presentation/theme/components';
-import { NavbarWithDrawer, Footer, CustomSpeedDial } from "@/presentation/shared/components";
+import {
+    NavbarWithDrawer,
+    Footer
+    // CustomSpeedDial
+} from "@/presentation/shared/components";
 
 // const geistSans = Geist({
 //     variable: "--font-geist-sans",
@@ -83,7 +87,7 @@ export default function RootLayout({
                             {/* </div> */}
                             {/* </main> */}
                             <Footer />
-                            <CustomSpeedDial />
+                            {/* <CustomSpeedDial /> */}
                         </Box>
                     </TranslationProvider>
                 </body>

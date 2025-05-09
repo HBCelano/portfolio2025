@@ -69,19 +69,19 @@ export const Footer = () => {
                 className="flex flex-1 gap-x-4 justify-end"
             >
                 <Tooltip title={t('footer.tooltips.whatsapp')} placement="top">
-                    <Link href='https://wa.me/5492352417849' target="_blank">
+                    <Link href='https://wa.me/5492352417849' target="_blank" rel='noreferrer'>
                         {/* <WhatsAppSVG width={36} height={36} /> */}
                         <WhatsApp color="success" fontSize="large" />
                     </Link>
                 </Tooltip>
                 <Tooltip title={t('footer.tooltips.instagram')} placement="top">
-                    <Link href='https://www.instagram.com/homecelano/' target="_blank">
+                    <Link href='https://www.instagram.com/homecelano/' target="_blank" rel='noreferrer'>
                         {/* <InstagramSVG width={36} height={36} /> */}
                         <Instagram color="secondary" fontSize="large" />
                     </Link>
                 </Tooltip>
                 <Tooltip title={t('footer.tooltips.linkedIn')} placement="top">
-                    <Link href='https://linkedin.com/in/hbcelano/' target="_blank">
+                    <Link href='https://linkedin.com/in/hbcelano/' target="_blank" rel='noreferrer'>
                         {/* <LinkedInSVG width={36} height={36} /> */}
                         <LinkedIn color="primary" fontSize="large" />
                     </Link>
