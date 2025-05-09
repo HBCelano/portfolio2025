@@ -1,14 +1,21 @@
 'use client';
 
-import { forwardRef } from 'react';
+// import { forwardRef } from 'react';
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
-import { motion, type MotionProps } from 'framer-motion';
+import {
+    motion
+    // type MotionProps
+} from 'framer-motion';
 import { useTheme } from '@mui/material/styles';
-import Box, { type BoxProps } from "@mui/material/Box";
+import Box, {
+    // type BoxProps
+}
+    from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
-import LogoSvg from 'root/public/img/cv-footer.svg';
+// import LogoSvg from 'root/public/img/cv-footer.svg';
+import LogoSvgHC from 'root/public/img/hc.svg';
 import Instagram from '@mui/icons-material/Instagram';
 import WhatsApp from '@mui/icons-material/WhatsApp';
 import LinkedIn from '@mui/icons-material/LinkedIn';
@@ -16,9 +23,10 @@ import LinkedIn from '@mui/icons-material/LinkedIn';
 // import InstagramSVG from 'root/public/img/contact/instagram.svg';
 // import LinkedInSVG from 'root/public/img/contact/linkedin.svg';
 
-const MotionBoxForwardRef = forwardRef<HTMLElement, MotionProps & BoxProps>((props, ref) => <Box ref={ref} {...props} />);
-MotionBoxForwardRef.displayName = 'MotionBox';
-const MotionBox = motion.create(MotionBoxForwardRef);
+// const MotionBoxForwardRef = forwardRef<HTMLElement, MotionProps & BoxProps>((props, ref) => <Box ref={ref} {...props} />);
+// MotionBoxForwardRef.displayName = 'MotionBox';
+// const MotionBox = motion.create(MotionBoxForwardRef);
+const SVGMotion = motion.create(LogoSvgHC);
 
 export const Footer = () => {
     const { palette } = useTheme();
@@ -38,7 +46,7 @@ export const Footer = () => {
             }}
         >
             <Box component='section' sx={{ flex: 1 }}>
-                <MotionBox
+                {/* <MotionBox
                     sx={{
                         borderRadius: '50%',
                         width: 36,
@@ -59,7 +67,19 @@ export const Footer = () => {
                         strokeWidth={2}
                         style={{ transform: 'scale(1.2)' }}
                     />
-                </MotionBox>
+                </MotionBox> */}
+                <SVGMotion
+                    width='45'
+                    height='45'
+                    color={palette.mode === 'dark' ? 'white' : 'black'}
+                    animate={{ fill: ['#2196f3', '#4caf50', '#ff9800', '#e91e63', '#2196f3'] }}
+                    transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        repeatType: 'loop',
+                        ease: 'linear'
+                    }}
+                />
             </Box>
             <Typography sx={{ flex: 1 }} variant="overline" fontSize='.85rem' align="center">
                 {new Date().getFullYear()} &copy; {t('footer.copyright')}

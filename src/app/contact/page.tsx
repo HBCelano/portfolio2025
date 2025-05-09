@@ -12,10 +12,15 @@ import {
     Box,
     Typography,
     useTheme,
-    useMediaQuery
+    useMediaQuery,
+    ButtonGroup,
+    Button,
+    Divider
     // type BoxProps
 } from "@mui/material";
-import { CustomMotionImage } from "root/src/presentation/contact/CustomMotionImage";
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
+import CloudDownloadOutlinedIcon from '@mui/icons-material/CloudDownloadOutlined';
+// import { CustomMotionImage } from "root/src/presentation/contact/CustomMotionImage";
 import { CustomForm } from "@/presentation/contact/CustomForm";
 import { CustomSpeedDial } from "@/presentation/shared/components";
 
@@ -34,13 +39,14 @@ const Contact = () => {
         <Box
             component='section'
             className="flex max-[900px]:flex-col justify-center gap-10 xl:gap-24"
-            sx={{ pt: { md: 6 } }}
+            sx={{ pt: { md: 4 }, pb: 4 }}
         >
             {/* <MotionBox */}
             <Box
                 component='section'
                 flex={1}
                 data-aos='fade-right'
+                data-aos-duration={1000}
             // initial={{ x: '-100vw', opacity: 0 }}
             // animate={{ x: 0, opacity: 1 }}
             // transition={{ duration: 1 }}
@@ -51,28 +57,52 @@ const Contact = () => {
                 <Typography
                     component='p'
                     variant={isUpBreakpointSM ? 'h6' : 'subtitle1'}
-                    sx={{ marginTop: '1rem', fontWeight: 'light' }}
+                    sx={{ marginTop: '1rem', marginBottom: '2rem', fontWeight: 'light' }}
                     gutterBottom
-                // className="text-center"
+                    className="text-center"
                 >
                     {t('main.contact.body1')}
                 </Typography>
+                <Divider>CV</Divider>
                 <Typography
                     component='p'
                     variant={isUpBreakpointSM ? 'h6' : 'subtitle1'}
                     color="textSecondary"
-                    sx={{ fontWeight: 'light' }}
-                // className="text-center"
+                    sx={{ fontWeight: 'light', mt: 2, mb: 3 }}
+                    className="text-center"
                 >
                     {t('main.contact.body2')}
                 </Typography>
                 <Box
+                    component='section'
+                    display='flex'
+                    flexDirection='column'
+                    // justifyContent='space-between'
+                    justifyContent='center'
+                    alignItems='center'
+                    gap={3}
+                >
+                    <Box
+                        component='div'
+                    >
+                        <ButtonGroup variant="outlined" aria-label="Basic button group">
+                            <Button startIcon={<VisibilityOutlinedIcon />}>
+                                Ver
+                            </Button>
+                            <Button startIcon={<CloudDownloadOutlinedIcon />}>
+                                Descargar
+                            </Button>
+                        </ButtonGroup>
+                    </Box>
+                    <CustomSpeedDial />
+                </Box>
+                {/* <Box
                     component='div'
                     display='flex'
                     justifyContent='center'
                 >
                     <CustomMotionImage />
-                </Box>
+                </Box> */}
             </Box>
             {/* </MotionBox> */}
             {/* <MotionBox */}
@@ -80,6 +110,7 @@ const Contact = () => {
                 component='section'
                 flex={1}
                 data-aos='fade-left'
+                data-aos-duration={1000}
             // initial={{ x: '100vw', opacity: 0 }}
             // animate={{ x: 0, opacity: 1 }}
             // transition={{ duration: 1 }}
@@ -87,7 +118,6 @@ const Contact = () => {
                 <CustomForm />
             </Box>
             {/* </MotionBox> */}
-            <CustomSpeedDial />
         </Box>
     );
 };

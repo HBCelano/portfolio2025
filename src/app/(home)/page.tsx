@@ -3,6 +3,7 @@
 import { useEffect, useState, forwardRef } from "react";
 import Link from "next/link";
 import { useTranslation } from 'react-i18next';
+// import { type TFunction } from "i18next";
 import { motion, type MotionProps } from 'framer-motion';
 import {
     Box,
@@ -15,20 +16,36 @@ import {
 import { CustomAvatar } from "@/presentation/home/components";
 import { CustomDialog } from "@/presentation/shared/components";
 
+// const CustomDialogControlled = ({ translate }: { translate: TFunction<"translation", undefined> }) => {
+//     const [open, setOpen] = useState<boolean>(false);
+
+//     return <>
+//         <Button variant="contained" onClick={() => setOpen(true)}>{translate('main.home.textButtonAbout')}</Button>
+//         <CustomDialog
+//             title={translate('main.home.modal.title')}
+//             text1={translate('main.home.modal.body1')}
+//             text2={translate('main.home.modal.body2')}
+//             textButton={translate('main.home.modal.textButton')}
+//             open={open}
+//             handleClose={() => setOpen(false)}
+//         />
+//     </>
+// };
+
+// const MotionBox = motion.create(Box);
+const MotionBoxForwardRef = forwardRef<HTMLElement, MotionProps & BoxProps>((props, ref) => <Box ref={ref} {...props} />);
+MotionBoxForwardRef.displayName = 'MotionBox';
+const MotionBox = motion.create(MotionBoxForwardRef);
+
 const Home = () => {
-    const [open, setOpen] = useState<boolean>(false);
     const theme = useTheme();
     const isUpBreakpointSM = useMediaQuery(theme.breakpoints.up('sm'));
     const { t, i18n } = useTranslation();
+    const [open, setOpen] = useState<boolean>(false);
 
     useEffect(() => {
         console.log(i18n.language);
     }, [i18n.language]);
-
-    // const MotionBox = motion.create(Box);
-    const MotionBoxForwardRef = forwardRef<HTMLElement, MotionProps & BoxProps>((props, ref) => <Box ref={ref} {...props} />);
-    MotionBoxForwardRef.displayName = 'MotionBox';
-    const MotionBox = motion.create(MotionBoxForwardRef);
 
     return (
         <>
@@ -70,7 +87,10 @@ const Home = () => {
                         {t('main.home.body')}
                     </Typography>
                     <div className="flex gap-x-3 justify-center" style={{ marginTop: '2rem' }}>
-                        <Button variant="contained" onClick={() => setOpen(true)}>{t('main.home.textButtonAbout')}</Button>
+                        {/* <CustomDialogControlled translate={t} /> */}
+                        <Button variant="contained" onClick={() => setOpen(true)}>
+                            {t('main.home.textButtonAbout')}
+                        </Button>
                         <Link href={'/contact'}>
                             <Button variant="outlined">{t('main.home.textButtonContact')}</Button>
                         </Link>

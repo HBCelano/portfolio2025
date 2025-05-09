@@ -1,0 +1,9 @@
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="400.000000pt" height="400.000000pt" viewBox="0 0 400.000000 400.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<g fill="none" stroke="#000000">
+  <circle cx="200" cy="200" r="170" fill="none" stroke="#000000" stroke-width="22"/>
+  <text x="200" y="200" font-size="150" text-anchor="middle" font-family="__nextjs-Geist, Roboto, Arial, sans-serif" font-weight='light' dy=".3em" fill="#000000" stroke="none">HC</text>
+</g>
+</svg>

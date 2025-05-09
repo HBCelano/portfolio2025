@@ -38,11 +38,16 @@ export function CustomForm() {
     const [nameErrorMessage, setNameErrorMessage] = useState('');
     const [emailError, setEmailError] = useState(false);
     const [emailErrorMessage, setEmailErrorMessage] = useState('');
+    const [messageError, setMessageError] = useState(false);
+    const [messageErrorMessage, setMessageErrorMessage] = useState('');
 
     const validateInputs = () => {
         const name = document.getElementById('name') as HTMLInputElement;
         const email = document.getElementById('email') as HTMLInputElement;
+        const message = document.getElementById('message') as HTMLInputElement;
+
         let isValid = true;
+
         if (!name.value) {
             setNameError(true);
             setNameErrorMessage('Debe ingresar un nombre válido.');
@@ -51,6 +56,7 @@ export function CustomForm() {
             setNameError(false);
             setNameErrorMessage('');
         };
+
         if (!email.value || !/\S+@\S+\.\S+/.test(email.value)) {
             setEmailError(true);
             setEmailErrorMessage('Por favor ingrese un e-mail válido.');
@@ -59,17 +65,29 @@ export function CustomForm() {
             setEmailError(false);
             setEmailErrorMessage('');
         };
+
+        if (!message.value) {
+            setMessageError(true);
+            setMessageErrorMessage('Debe ingresar un mensaje válido.');
+            isValid = false;
+        } else {
+            setMessageError(false);
+            setMessageErrorMessage('');
+        };
+
         return isValid;
     };
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('name'),
-            password: data.get('email'),
-            message: data.get('message'),
-        });
+        if (validateInputs()) {
+            const data = new FormData(event.currentTarget);
+            console.log({
+                email: data.get('name'),
+                password: data.get('email'),
+                message: data.get('message')
+            });
+        };
     };
 
     return (
@@ -79,13 +97,14 @@ export function CustomForm() {
                 sx={{
                     display: 'flex',
                     alignItems: 'center',
-                    columnGap: 1
+                    columnGap: .5,
+                    mb: 2
                 }}
             >
                 <Image
-                    src={palette.mode === 'dark' ? '/img/cv.svg' : '/img/cv-light.svg'}
-                    width={35}
-                    height={35}
+                    src={palette.mode === 'dark' ? '/img/hc-dark.svg' : '/img/hc-light.svg'}
+                    width={50}
+                    height={50}
                     alt="Logo"
                 />
                 <Typography
@@ -98,6 +117,7 @@ export function CustomForm() {
             </Box>
             <Box
                 component="form"
+                noValidate
                 onSubmit={handleSubmit}
                 sx={{
                     display: 'flex',
@@ -148,12 +168,13 @@ export function CustomForm() {
                     autoComplete="off"
                     autoFocus
                     required
+                    error={messageError}
+                    helperText={messageErrorMessage}
                 />
                 <Button
                     type="submit"
                     fullWidth
                     variant="contained"
-                    onClick={validateInputs}
                     startIcon={<ArrowForwardOutlinedIcon />}
                 >
                     Enviar
