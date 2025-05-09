@@ -60,6 +60,11 @@
             "skills": {
                 "title": "Skills"
             }
+        },
+        "contact": {
+            "title": "Contact",
+            "body1": "Fill out the form to contact me, or access my social media using the buttons in the lower right corner.",
+            "body2": "You can also view or download my CV."
         }
     },
     "footer": {

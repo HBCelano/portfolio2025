@@ -65,7 +65,6 @@ export const NavbarWithDrawer = () => {
         setMobileOpen(prevState => !prevState);
     };
 
-
     const subMenuExperience = t('header.navbarWithDrawer.subMenuExperience', { returnObjects: true }) as string[];
     const subMenu = (
         <Menu
@@ -132,6 +131,7 @@ export const NavbarWithDrawer = () => {
                     width={35}
                     height={35}
                     alt="Logo"
+                    priority
                 />
                 <Typography variant="h6" sx={{ pl: 1, fontWeight: 'light' }}>
                     HBCelano
@@ -193,6 +193,7 @@ export const NavbarWithDrawer = () => {
                             width={35}
                             height={35}
                             alt="Logo"
+                            priority
                         />
                         <Typography variant="h6" component="h6" sx={{ pl: 1, fontWeight: 'light' }}>HBCelano</Typography>
                     </Box>
