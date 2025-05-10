@@ -26,7 +26,7 @@ const Experience = () => {
                 className="text-center"
                 mt={2}
                 fontWeight={200}
-                sx={{ scrollMarginTop: 75 }}
+                sx={{ scrollMarginTop: 180 }}
             >
                 {t('main.experience.studies.title')}
             </Typography>
@@ -42,7 +42,7 @@ const Experience = () => {
                 className="text-center"
                 mt={6}
                 fontWeight={200}
-                sx={{ scrollMarginTop: 75 }}
+                sx={{ scrollMarginTop: 180 }}
             >
                 {t('main.experience.work.title')}
             </Typography>
@@ -59,7 +59,7 @@ const Experience = () => {
                 className="text-center"
                 mt={6}
                 fontWeight={200}
-                sx={{ scrollMarginTop: 75 }}
+                sx={{ scrollMarginTop: 180 }}
             >
                 {t('main.experience.skills.title')}
             </Typography>
