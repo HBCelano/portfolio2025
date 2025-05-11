@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { type Dispatch, type SetStateAction, useState, useEffect } from 'react';
 import Image from 'next/image';
+import axios from 'axios';
 import { useTheme, styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -7,6 +8,8 @@ import Divider from '@mui/material/Divider';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import MuiCard from '@mui/material/Card';
+import Collapse from '@mui/material/Collapse';
+import Alert from '@mui/material/Alert';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import GmailSVG from 'root/public/img/contact/gmail.svg';
 // import WhatsAppSVG from 'root/public/img/contact/whatsapp.svg';
@@ -32,62 +35,108 @@ const Card = styled(MuiCard)(({ theme }) => ({
     })
 }));
 
-export function CustomForm() {
+type InputValidationType = {
+    nameError: boolean,
+    nameErrorMessage: string,
+    emailError: boolean,
+    emailErrorMessage: string,
+    messageError: boolean,
+    messageErrorMessage: string
+};
+
+export function CustomForm({ setOpenBackdrop }: { setOpenBackdrop: Dispatch<SetStateAction<boolean>> }) {
     const { palette } = useTheme();
-    const [nameError, setNameError] = useState(false);
-    const [nameErrorMessage, setNameErrorMessage] = useState('');
-    const [emailError, setEmailError] = useState(false);
-    const [emailErrorMessage, setEmailErrorMessage] = useState('');
-    const [messageError, setMessageError] = useState(false);
-    const [messageErrorMessage, setMessageErrorMessage] = useState('');
+    const [inputValidation, setInputValidation] = useState<InputValidationType>({
+        nameError: false,
+        nameErrorMessage: '',
+        emailError: false,
+        emailErrorMessage: '',
+        messageError: false,
+        messageErrorMessage: ''
+    });
+    const [sendButtonDisabled, setSendButtonDisabled] = useState<boolean>(false);
+    const [openAlert, setOpenAlert] = useState<boolean>(false);
+    const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
+    const [isMobile, setIsMobile] = useState<boolean>(false);
+
+    useEffect(() => {
+        const userAgent = typeof window !== 'undefined' ? navigator.userAgent : '';
+        const isMobileDevice = /Mobi|mobile|Android|iPhone|iPad|iPod/i.test(userAgent);
+        setIsMobile(isMobileDevice);
+    }, []);
 
     const validateInputs = () => {
         const name = document.getElementById('name') as HTMLInputElement;
         const email = document.getElementById('email') as HTMLInputElement;
         const message = document.getElementById('message') as HTMLInputElement;
-
         let isValid = true;
 
         if (!name.value) {
-            setNameError(true);
-            setNameErrorMessage('Debe ingresar un nombre válido.');
+            setInputValidation(prevInputValidation => ({
+                ...prevInputValidation,
+                nameError: true,
+                nameErrorMessage: 'Por favor ingrese un nombre válido.'
+            }));
             isValid = false;
         } else {
-            setNameError(false);
-            setNameErrorMessage('');
+            setInputValidation(prevInputValidation => ({
+                ...prevInputValidation,
+                nameError: false,
+                nameErrorMessage: ''
+            }));
         };
-
         if (!email.value || !/\S+@\S+\.\S+/.test(email.value)) {
-            setEmailError(true);
-            setEmailErrorMessage('Por favor ingrese un e-mail válido.');
+            setInputValidation(prevInputValidation => ({
+                ...prevInputValidation,
+                emailError: true,
+                emailErrorMessage: 'Por favor ingrese un e-mail válido.'
+            }));
             isValid = false;
         } else {
-            setEmailError(false);
-            setEmailErrorMessage('');
+            setInputValidation(prevInputValidation => ({
+                ...prevInputValidation,
+                emailError: false,
+                emailErrorMessage: ''
+            }));
         };
-
         if (!message.value) {
-            setMessageError(true);
-            setMessageErrorMessage('Debe ingresar un mensaje válido.');
+            setInputValidation(prevInputValidation => ({
+                ...prevInputValidation,
+                messageError: true,
+                messageErrorMessage: 'Por favor ingrese un mensaje válido.'
+            }));
             isValid = false;
         } else {
-            setMessageError(false);
-            setMessageErrorMessage('');
+            setInputValidation(prevInputValidation => ({
+                ...prevInputValidation,
+                messageError: false,
+                messageErrorMessage: ''
+            }));
         };
 
         return isValid;
     };
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        setOpenAlert(false);
+        setSendButtonDisabled(true);
         if (validateInputs()) {
+            setOpenBackdrop(true);
             const data = new FormData(event.currentTarget);
-            console.log({
-                email: data.get('name'),
-                password: data.get('email'),
-                message: data.get('message')
-            });
+            data.append('_autoresponse', 'Tu mensaje fue recibido, gracias por visitar mi sitio. Te contactaré pronto.');
+            try {
+                const response = await axios.post('https://formsubmit.co/benjaminncelano@gmail.com', data);
+                setSubmitSuccess(response.status === 200 ? true : false);
+            } catch (error) {
+                console.error('Error: ', error);
+                setSubmitSuccess(false);
+            } finally {
+                setOpenBackdrop(false);
+                setOpenAlert(true);
+            };
         };
+        setSendButtonDisabled(false);
     };
 
     return (
@@ -132,14 +181,14 @@ export function CustomForm() {
                     name="name"
                     label="Nombre"
                     variant="outlined"
-                    color={nameError ? 'error' : 'primary'}
+                    color={inputValidation.nameError ? 'error' : 'primary'}
                     fullWidth
                     placeholder="Ingrese su nombre"
                     autoComplete="off"
                     autoFocus
                     required
-                    error={nameError}
-                    helperText={nameErrorMessage}
+                    error={inputValidation.nameError}
+                    helperText={inputValidation.nameErrorMessage}
                 />
                 <TextField
                     type="email"
@@ -147,38 +196,61 @@ export function CustomForm() {
                     name="email"
                     label="E-mail"
                     variant="outlined"
-                    color={emailError ? 'error' : 'primary'}
+                    color={inputValidation.emailError ? 'error' : 'primary'}
                     fullWidth
                     placeholder="Ingrese su e-mail"
                     autoComplete="email"
-                    autoFocus
                     required
-                    error={emailError}
-                    helperText={emailErrorMessage}
+                    error={inputValidation.emailError}
+                    helperText={inputValidation.emailErrorMessage}
                 />
                 <TextField
                     type="text"
                     id="message"
                     name="message"
+                    // slotProps={{
+                    //     htmlInput: {
+                    //         id: 'message',
+                    //         name: 'message'
+                    //     }
+                    // }}
                     label="Mensaje"
                     variant="outlined"
                     color='primary'
+                    // color={inputValidation.messageError ? 'error' : 'primary'}
                     fullWidth
                     placeholder="Ingrese su mensaje"
                     autoComplete="off"
-                    autoFocus
                     required
-                    error={messageError}
-                    helperText={messageErrorMessage}
+                    multiline
+                    maxRows={4}
+                    error={inputValidation.messageError}
+                    helperText={inputValidation.messageErrorMessage}
                 />
                 <Button
                     type="submit"
                     fullWidth
                     variant="contained"
                     startIcon={<ArrowForwardOutlinedIcon />}
+                    disabled={sendButtonDisabled}
                 >
                     Enviar
                 </Button>
+                <Collapse in={openAlert}>
+                    <Alert
+                        severity={submitSuccess ? 'success' : 'error'}
+                        variant="outlined"
+                        onClose={() => setOpenAlert(false)}
+                        sx={{ my: 2 }}
+                    >
+                        {submitSuccess
+                            ?
+                            'El mensaje ha sido enviado con éxito, será contactado a la brevedad.'
+                            :
+                            'Hubo un error al enviar el mensaje, vuelva a intentarlo más tarde.'
+                        }
+                    </Alert>
+                </Collapse>
             </Box>
             <Divider>Gmail</Divider>
             <Box
@@ -186,7 +258,12 @@ export function CustomForm() {
             >
                 <Button
                     LinkComponent='a'
-                    href='https://mail.google.com/mail/?view=cm&fs=1&to=benjaminncelano@gmail.com&su=Consulta&body=Cuerpo%20del%20mensaje'
+                    href={encodeURI(isMobile
+                        ?
+                        'mailto:benjaminncelano@gmail.com?subject=Consulta desde sitio web&body=Hola Homero, me comunico con vos para...'
+                        :
+                        'https://mail.google.com/mail/?view=cm&fs=1&to=benjaminncelano@gmail.com&su=Consulta desde sitio web&body=Hola Homero, me comunico con vos para...'
+                    )}
                     target='_blank'
                     rel='noreferrer'
                     variant="outlined"
