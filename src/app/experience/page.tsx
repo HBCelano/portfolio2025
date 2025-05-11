@@ -17,53 +17,53 @@ const Experience = () => {
 
     return <>
         <Box
-            component='div'
-            data-aos='fade-up'
+            component='section'
+            id="study"
+            sx={{ scrollMarginTop: 100 }}
         >
-            <Typography
-                id="study"
-                variant="h2"
-                className="text-center"
-                mt={2}
-                fontWeight={200}
-                sx={{ scrollMarginTop: 180 }}
-            >
-                {t('main.experience.studies.title')}
-            </Typography>
-            <Study />
+            <div data-aos='fade-up'>
+                <Typography
+                    variant="h2"
+                    className="text-center"
+                    mt={2}
+                    fontWeight={200}
+                >
+                    {t('main.experience.studies.title')}
+                </Typography>
+                <Study />
+            </div>
         </Box>
         <Box
-            component='div'
-            data-aos='fade-up'
+            component='section'
+            id="work"
+            sx={{ mt: 6, scrollMarginTop: 100 }}
         >
-            <Typography
-                id="work"
-                variant="h2"
-                className="text-center"
-                mt={6}
-                fontWeight={200}
-                sx={{ scrollMarginTop: 180 }}
-            >
-                {t('main.experience.work.title')}
-            </Typography>
-            <Work />
+            <div data-aos='fade-up'>
+                <Typography
+                    variant="h2"
+                    className="text-center"
+                    fontWeight={200}
+                >
+                    {t('main.experience.work.title')}
+                </Typography>
+                <Work />
+            </div>
         </Box>
         <Box
-            component='div'
-            data-aos='fade-up'
-            mb={6}
+            component='section'
+            id="skills"
+            sx={{ my: 6, scrollMarginTop: 100 }}
         >
-            <Typography
-                id="skills"
-                variant="h2"
-                className="text-center"
-                mt={6}
-                fontWeight={200}
-                sx={{ scrollMarginTop: 180 }}
-            >
-                {t('main.experience.skills.title')}
-            </Typography>
-            <Skills />
+            <div data-aos='fade-up'>
+                <Typography
+                    variant="h2"
+                    className="text-center"
+                    fontWeight={200}
+                >
+                    {t('main.experience.skills.title')}
+                </Typography>
+                <Skills />
+            </div>
         </Box>
     </>;
 };
