@@ -73,13 +73,13 @@ const Contact = () => {
             >
                 <ButtonGroup variant="outlined" aria-label="Basic button group">
                     <Button startIcon={<VisibilityOutlinedIcon />}>
-                        Ver
+                        {t('main.contact.cv.view')}
                     </Button>
                     <Button startIcon={<CloudDownloadOutlinedIcon />}>
-                        Descargar
+                        {t('main.contact.cv.download')}
                     </Button>
                 </ButtonGroup>
-                <CustomSpeedDial />
+                <CustomSpeedDial tooltipTitle={t('main.contact.cv.shareTooltip')} />
             </Box>
         </>
     );

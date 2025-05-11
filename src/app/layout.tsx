@@ -63,6 +63,7 @@ export default function RootLayout({
                     <TranslationProvider>
                         <Box
                             sx={{
+                                // minHeight: '100vh',
                                 minHeight: '100dvh',
                                 display: 'flex',
                                 flexDirection: 'column'

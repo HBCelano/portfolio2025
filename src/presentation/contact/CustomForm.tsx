@@ -1,6 +1,7 @@
 import { type Dispatch, type SetStateAction, useState, useEffect } from 'react';
 import Image from 'next/image';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 import { useTheme, styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -46,6 +47,7 @@ type InputValidationType = {
 
 export function CustomForm({ setOpenBackdrop }: { setOpenBackdrop: Dispatch<SetStateAction<boolean>> }) {
     const { palette } = useTheme();
+    const { t } = useTranslation();
     const [inputValidation, setInputValidation] = useState<InputValidationType>({
         nameError: false,
         nameErrorMessage: '',
@@ -75,7 +77,7 @@ export function CustomForm({ setOpenBackdrop }: { setOpenBackdrop: Dispatch<SetS
             setInputValidation(prevInputValidation => ({
                 ...prevInputValidation,
                 nameError: true,
-                nameErrorMessage: 'Por favor ingrese un nombre válido.'
+                nameErrorMessage: t('main.contact.form.nameErrorMessage')
             }));
             isValid = false;
         } else {
@@ -89,7 +91,7 @@ export function CustomForm({ setOpenBackdrop }: { setOpenBackdrop: Dispatch<SetS
             setInputValidation(prevInputValidation => ({
                 ...prevInputValidation,
                 emailError: true,
-                emailErrorMessage: 'Por favor ingrese un e-mail válido.'
+                emailErrorMessage: t('main.contact.form.emailErrorMessage')
             }));
             isValid = false;
         } else {
@@ -103,7 +105,7 @@ export function CustomForm({ setOpenBackdrop }: { setOpenBackdrop: Dispatch<SetS
             setInputValidation(prevInputValidation => ({
                 ...prevInputValidation,
                 messageError: true,
-                messageErrorMessage: 'Por favor ingrese un mensaje válido.'
+                messageErrorMessage: t('main.contact.form.messageErrorMessage')
             }));
             isValid = false;
         } else {
@@ -124,9 +126,20 @@ export function CustomForm({ setOpenBackdrop }: { setOpenBackdrop: Dispatch<SetS
         if (validateInputs()) {
             setOpenBackdrop(true);
             const data = new FormData(event.currentTarget);
-            data.append('_autoresponse', 'Tu mensaje fue recibido, gracias por visitar mi sitio. Te contactaré pronto.');
+            // data.append('_autoresponse', 'Tu mensaje fue recibido, gracias por visitar mi sitio. Te contactaré pronto.');
             try {
-                const response = await axios.post('https://formsubmit.co/benjaminncelano@gmail.com', data);
+                // axios.defaults.headers.post['Content-Type'] = 'application/json';
+                const response = await axios.post(
+                    `https://formsubmit.co/ajax/${atob(process.env.NEXT_PUBLIC_EMAIL as string)}`,
+                    data
+                    // Object.fromEntries(data.entries()),
+                    // {
+                    //     headers: {
+                    //         ...axios.defaults.headers.post,
+                    //         "Content-Type": 'application/json'
+                    //     }
+                    // }
+                );
                 setSubmitSuccess(response.status === 200 ? true : false);
             } catch (error) {
                 console.error('Error: ', error);
@@ -179,11 +192,11 @@ export function CustomForm({ setOpenBackdrop }: { setOpenBackdrop: Dispatch<SetS
                     type="text"
                     id="name"
                     name="name"
-                    label="Nombre"
+                    label={t('main.contact.form.labelName')}
                     variant="outlined"
                     color={inputValidation.nameError ? 'error' : 'primary'}
                     fullWidth
-                    placeholder="Ingrese su nombre"
+                    placeholder={t('main.contact.form.placeholderName')}
                     autoComplete="off"
                     autoFocus
                     required
@@ -194,18 +207,17 @@ export function CustomForm({ setOpenBackdrop }: { setOpenBackdrop: Dispatch<SetS
                     type="email"
                     id="email"
                     name="email"
-                    label="E-mail"
+                    label={t('main.contact.form.labelEmail')}
                     variant="outlined"
                     color={inputValidation.emailError ? 'error' : 'primary'}
                     fullWidth
-                    placeholder="Ingrese su e-mail"
+                    placeholder={t('main.contact.form.placeholderEmail')}
                     autoComplete="email"
                     required
                     error={inputValidation.emailError}
                     helperText={inputValidation.emailErrorMessage}
                 />
                 <TextField
-                    type="text"
                     id="message"
                     name="message"
                     // slotProps={{
@@ -214,18 +226,31 @@ export function CustomForm({ setOpenBackdrop }: { setOpenBackdrop: Dispatch<SetS
                     //         name: 'message'
                     //     }
                     // }}
-                    label="Mensaje"
+                    label={t('main.contact.form.labelMessage')}
                     variant="outlined"
                     color='primary'
                     // color={inputValidation.messageError ? 'error' : 'primary'}
                     fullWidth
-                    placeholder="Ingrese su mensaje"
+                    placeholder={t('main.contact.form.placeholderMessage')}
                     autoComplete="off"
                     required
                     multiline
                     maxRows={4}
                     error={inputValidation.messageError}
                     helperText={inputValidation.messageErrorMessage}
+                    sx={isMobile ? { '& .MuiOutlinedInput-notchedOutline legend': { maxWidth: '.01px' } } : undefined}
+                    slotProps={isMobile ?
+                        {
+                            inputLabel: {
+                                sx: theme => ({
+                                    '&.MuiInputLabel-shrink': {
+                                        bgcolor: theme.palette.background.paper,
+                                        px: '4px'
+                                    }
+                                })
+                            }
+                        } : undefined
+                    }
                 />
                 <Button
                     type="submit"
@@ -234,7 +259,7 @@ export function CustomForm({ setOpenBackdrop }: { setOpenBackdrop: Dispatch<SetS
                     startIcon={<ArrowForwardOutlinedIcon />}
                     disabled={sendButtonDisabled}
                 >
-                    Enviar
+                    {t('main.contact.form.submitButton')}
                 </Button>
                 <Collapse in={openAlert}>
                     <Alert
@@ -243,12 +268,7 @@ export function CustomForm({ setOpenBackdrop }: { setOpenBackdrop: Dispatch<SetS
                         onClose={() => setOpenAlert(false)}
                         sx={{ my: 2 }}
                     >
-                        {submitSuccess
-                            ?
-                            'El mensaje ha sido enviado con éxito, será contactado a la brevedad.'
-                            :
-                            'Hubo un error al enviar el mensaje, vuelva a intentarlo más tarde.'
-                        }
+                        {submitSuccess ? t('main.contact.form.submitSuccessAlert') : t('main.contact.form.submitErrorAlert')}
                     </Alert>
                 </Collapse>
             </Box>
@@ -260,9 +280,9 @@ export function CustomForm({ setOpenBackdrop }: { setOpenBackdrop: Dispatch<SetS
                     LinkComponent='a'
                     href={encodeURI(isMobile
                         ?
-                        'mailto:benjaminncelano@gmail.com?subject=Consulta desde sitio web&body=Hola Homero, me comunico con vos para...'
+                        `mailto:benjaminncelano@gmail.com?subject=${t('main.contact.form.gmail.subject')}&body=${t('main.contact.form.gmail.body')}`
                         :
-                        'https://mail.google.com/mail/?view=cm&fs=1&to=benjaminncelano@gmail.com&su=Consulta desde sitio web&body=Hola Homero, me comunico con vos para...'
+                        `https://mail.google.com/mail/?view=cm&fs=1&to=benjaminncelano@gmail.com&su=${t('main.contact.form.gmail.subject')}&body=${t('main.contact.form.gmail.body')}`
                     )}
                     target='_blank'
                     rel='noreferrer'
@@ -270,7 +290,7 @@ export function CustomForm({ setOpenBackdrop }: { setOpenBackdrop: Dispatch<SetS
                     fullWidth
                     startIcon={<GmailSVG width={30} height={30} />}
                 >
-                    Enviar por Gmail
+                    {t('main.contact.form.gmail.button')}
                 </Button>
                 {/* <Button
                     fullWidth

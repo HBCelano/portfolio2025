@@ -64,7 +64,31 @@
         "contact": {
             "title": "Contacto",
             "body1": "Completa el formulario para comunicarte conmigo, o accede a mis redes sociales desde los botones ubicados en el pie de página.",
-            "body2": "También puedes visualizar o descargar mi CV."
+            "body2": "También puedes visualizar o descargar mi CV.",
+            "cv": {
+                "view": "Ver",
+                "download": "Descargar",
+                "shareTooltip": "Compartir"
+            },
+            "form": {
+                "nameErrorMessage": "Por favor ingrese un nombre válido.",
+                "emailErrorMessage": "Por favor ingrese un correo electrónico válido.",
+                "messageErrorMessage": "Por favor ingrese un mensaje válido.",
+                "labelName": "Nombre",
+                "placeholderName": "Ingrese su nombre",
+                "labelEmail": "Correo electrónico",
+                "placeholderEmail": "Ingrese su correo electrónico",
+                "labelMessage": "Mensaje",
+                "placeholderMessage": "Ingrese su mensaje",
+                "submitButton": "Enviar",
+                "submitSuccessAlert": "El mensaje ha sido enviado con éxito, será contactado a la brevedad.",
+                "submitErrorAlert": "Hubo un error al enviar el mensaje, vuelva a intentarlo más tarde.",
+                "gmail": {
+                    "button": "Enviar por Gmail",
+                    "subject": "Consulta desde sitio web",
+                    "body": "Hola Homero, me comunico con vos porque.."
+                }
+            }
         }
     },
     "footer": {

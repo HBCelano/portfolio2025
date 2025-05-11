@@ -1,8 +1,7 @@
-// import Box from '@mui/material/Box';
 import SpeedDial from '@mui/material/SpeedDial';
 // import SpeedDialIcon from '@mui/material/SpeedDialIcon';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
-// import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import Tooltip from '@mui/material/Tooltip';
 // import VisibilityIcon from '@mui/icons-material/Visibility';
 // import SaveIcon from '@mui/icons-material/Save';
 // import PrintIcon from '@mui/icons-material/Print';
@@ -24,38 +23,38 @@ const actions = [
     { icon: <LinkedInIcon />, tooltipTitle: 'LinkedIn' }
 ];
 
-export function CustomSpeedDial() {
-    return (
-        <SpeedDial
-            direction='down'
-            // icon={
-            //     <Box component='div' display='flex' alignItems='center' columnGap={1}>
-            //         <span>Compartir CV</span>
-            //         <ShareIcon />
-            //         {/* <SpeedDialIcon /> */}
-            //     </Box>
-            // }
-            icon={<ShareIcon />}
-            FabProps={{
-                size: 'small',
-                color: 'secondary'
-                // variant: 'extended',
-                // sx: { borderRadius: 2 }
-            }}
-            ariaLabel="Acciones con CV"
-            sx={{
-                '& .MuiSpeedDial-actions': {
-                    flexDirection: 'row'
-                }
-            }}
-        >
-            {actions.map((action, index) => (
-                <SpeedDialAction
-                    key={index}
-                    icon={action.icon}
-                    slotProps={{ tooltip: { title: action.tooltipTitle, placement: 'bottom' } }}
-                />
-            ))}
-        </SpeedDial>
-    );
-};
+export const CustomSpeedDial = ({ tooltipTitle }: { tooltipTitle?: string }) => (
+
+    <SpeedDial
+        direction='down'
+        // icon={
+        //     <Box component='div' display='flex' alignItems='center' columnGap={1}>
+        //         <span>Compartir CV</span>
+        //         <ShareIcon />
+        //         {/* <SpeedDialIcon /> */}
+        //     </Box>
+        // }
+        icon={<Tooltip title={tooltipTitle} placement="right"><ShareIcon /></Tooltip>}
+        FabProps={{
+            size: 'small',
+            color: 'secondary'
+            // title: tooltipTitle
+            // variant: 'extended',
+            // sx: { borderRadius: 2 }
+        }}
+        ariaLabel="Actions with CV"
+        sx={{
+            '& .MuiSpeedDial-actions': {
+                flexDirection: 'row'
+            }
+        }}
+    >
+        {actions.map((action, index) => (
+            <SpeedDialAction
+                key={index}
+                icon={action.icon}
+                slotProps={{ tooltip: { title: action.tooltipTitle, placement: 'bottom' } }}
+            />
+        ))}
+    </SpeedDial>
+);
