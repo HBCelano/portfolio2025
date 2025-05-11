@@ -64,7 +64,31 @@
         "contact": {
             "title": "Contact",
             "body1": "Fill out the form to contact me, or access my social media channels using the buttons in the footer.",
-            "body2": "You can also view or download my CV."
+            "body2": "You can also view or download my CV.",
+            "cv": {
+                "view": "View",
+                "download": "Download",
+                "shareTooltip": "Share"
+            },
+            "form": {
+                "nameErrorMessage": "Please enter a valid name.",
+                "emailErrorMessage": "Please enter a valid email address.",
+                "messageErrorMessage": "Please enter a valid message.",
+                "labelName": "Name",
+                "placeholderName": "Enter your name",
+                "labelEmail": "Email",
+                "placeholderEmail": "Enter your email",
+                "labelMessage": "Message",
+                "placeholderMessage": "Enter your message",
+                "submitButton": "Send",
+                "submitSuccessAlert": "The message has been sent successfully, you will be contacted shortly.",
+                "submitErrorAlert": "There was an error sending the message, please try again later.",
+                "gmail": {
+                    "button": "Send via Gmail",
+                    "subject": "Consultation from website",
+                    "body": "Hello Homer, I'm contacting you because.."
+                }
+            }
         }
     },
     "footer": {
