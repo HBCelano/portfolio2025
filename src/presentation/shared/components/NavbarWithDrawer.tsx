@@ -1,6 +1,6 @@
 'use client';
 
-import { ComponentType, useState, type MouseEvent } from 'react';
+import { type ComponentType, useState, type MouseEvent } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Image from "next/image";
 import { useTranslation } from 'react-i18next';
@@ -127,7 +127,7 @@ export const NavbarWithDrawer = () => {
                 }}
             >
                 <Image
-                    src={palette.mode === 'dark' ? '/img/cv.svg' : '/img/cv-light.svg'}
+                    src={palette.mode === 'dark' ? '/img/hc-dark.svg' : '/img/hc-light.svg'}
                     width={35}
                     height={35}
                     alt="Logo"
@@ -189,7 +189,7 @@ export const NavbarWithDrawer = () => {
                         }}
                     >
                         <Image
-                            src='/img/cv.svg'
+                            src='/img/hc-dark.svg'
                             width={35}
                             height={35}
                             alt="Logo"
