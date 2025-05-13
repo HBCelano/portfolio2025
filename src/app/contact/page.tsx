@@ -72,14 +72,25 @@ const Contact = () => {
                 gap={3}
             >
                 <ButtonGroup variant="outlined" aria-label="Basic button group">
-                    <Button startIcon={<VisibilityOutlinedIcon />}>
+                    <Button
+                        LinkComponent='a'
+                        href={`${window.location.origin}/pdfs/cv/cv.pdf`}
+                        target="_blank"
+                        rel="noopener,noreferrer"
+                        startIcon={<VisibilityOutlinedIcon />}
+                    >
                         {t('main.contact.cv.view')}
                     </Button>
-                    <Button startIcon={<CloudDownloadOutlinedIcon />}>
+                    <Button
+                        LinkComponent='a'
+                        href={`${window.location.origin}/pdfs/cv/cv.pdf`}
+                        download='Homero Celano - CV'
+                        startIcon={<CloudDownloadOutlinedIcon />}
+                    >
                         {t('main.contact.cv.download')}
                     </Button>
                 </ButtonGroup>
-                <CustomSpeedDial tooltipTitle={t('main.contact.cv.shareTooltip')} />
+                <CustomSpeedDial tooltipTitle={t('main.contact.cv.shareTooltip')} shareText={`${encodeURIComponent('Hola, te comparto el siguiente Curriculum Vitae: ')}${window.location.origin}/pdfs/cv/cv.pdf`} />
             </Box>
         </>
     );
