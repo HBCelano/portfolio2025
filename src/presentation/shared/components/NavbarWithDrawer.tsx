@@ -128,8 +128,8 @@ export const NavbarWithDrawer = () => {
             >
                 <Image
                     src={palette.mode === 'dark' ? '/img/hc-dark.svg' : '/img/hc-light.svg'}
-                    width={35}
-                    height={35}
+                    width={45}
+                    height={45}
                     alt="Logo"
                     priority
                 />
@@ -169,20 +169,20 @@ export const NavbarWithDrawer = () => {
                 component="nav"
             // enableColorOnDark
             >
-                <Toolbar sx={{ justifyContent: { xs: 'space-between', md: 'flex-start' } }}>
+                <Toolbar sx={{ justifyContent: { xs: 'space-between', lg: 'flex-start' } }}>
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
                         edge="start"
                         onClick={handleDrawerToggle}
-                        sx={{ mr: 2, display: { md: 'none' } }}
+                        sx={{ mr: 2, display: { lg: 'none' } }}
                     >
                         <MenuIcon />
                     </IconButton>
                     <Box
                         component='section'
                         sx={{
-                            display: { xs: 'none', md: 'flex' },
+                            display: { xs: 'none', lg: 'flex' },
                             flexGrow: 1,
                             alignItems: 'center',
                             mr: 6
@@ -190,14 +190,14 @@ export const NavbarWithDrawer = () => {
                     >
                         <Image
                             src='/img/hc-dark.svg'
-                            width={35}
-                            height={35}
+                            width={45}
+                            height={45}
                             alt="Logo"
                             priority
                         />
                         <Typography variant="h6" component="h6" sx={{ pl: 1, fontWeight: 'light' }}>HBCelano</Typography>
                     </Box>
-                    <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+                    <Box sx={{ display: { xs: 'none', lg: 'block' } }}>
                         {
                             navItems.map((item, index) => {
                                 const IconComponent = navItemsIcons[navItemsHref[index]];
@@ -245,7 +245,7 @@ export const NavbarWithDrawer = () => {
                         keepMounted: true, // Better open performance on mobile.
                     }}
                     sx={{
-                        display: { xs: 'block', md: 'none' },
+                        display: { xs: 'block', lg: 'none' },
                         '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
                     }}
                 >

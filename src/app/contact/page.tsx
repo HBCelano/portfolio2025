@@ -74,7 +74,7 @@ const Contact = () => {
                 <ButtonGroup variant="outlined" aria-label="Basic button group">
                     <Button
                         LinkComponent='a'
-                        href={`${window.location.origin}/pdfs/cv/cv.pdf`}
+                        href={`${window.location.origin}/pdfs/cv/${t('main.contact.cv.file')}.pdf`}
                         target="_blank"
                         rel="noopener,noreferrer"
                         startIcon={<VisibilityOutlinedIcon />}
@@ -83,14 +83,22 @@ const Contact = () => {
                     </Button>
                     <Button
                         LinkComponent='a'
-                        href={`${window.location.origin}/pdfs/cv/cv.pdf`}
-                        download='Homero Celano - CV'
+                        href={`/api/downloads?type=downloadPDF&file=${t('main.contact.cv.file')}`}
+                        // href={`${window.location.origin}/pdfs/cv/cv.pdf`}
+                        // download='Homero Celano - CV'
                         startIcon={<CloudDownloadOutlinedIcon />}
                     >
                         {t('main.contact.cv.download')}
                     </Button>
                 </ButtonGroup>
-                <CustomSpeedDial tooltipTitle={t('main.contact.cv.shareTooltip')} shareText={`${encodeURIComponent('Hola, te comparto el siguiente Curriculum Vitae: ')}${window.location.origin}/pdfs/cv/cv.pdf`} />
+                <CustomSpeedDial
+                    tooltipTitle={t('main.contact.cv.shareTooltip')}
+                    tooltipTitleCopyURL={t('main.contact.cv.copyURL')}
+                    copyMessage={t('main.contact.cv.copyMessage')}
+                    shareText={
+                        `${encodeURIComponent(t('main.contact.cv.shareText'))}${window.location.origin}/pdfs/cv/${t('main.contact.cv.file')}.pdf`
+                    }
+                />
             </Box>
         </>
     );

@@ -24,11 +24,18 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 type ActionsType = {
     Icon: ComponentType<SvgIconProps>;
-    tooltipTitle: 'Gmail' | 'WhatsApp' | 'Copiar Link al portapapeles';
+    tooltipText?: string;
     onClick: () => void;
 };
 
-export const CustomSpeedDial = ({ tooltipTitle, shareText }: { tooltipTitle?: string, shareText?: string }) => {
+type CustomSpeedDialProps = {
+    tooltipTitle?: string;
+    tooltipTitleCopyURL?: string;
+    copyMessage?: string;
+    shareText?: string;
+};
+
+export const CustomSpeedDial = ({ tooltipTitle, tooltipTitleCopyURL, copyMessage, shareText }: CustomSpeedDialProps) => {
     const [copiado, setCopiado] = useState(false);
 
     const copiarAlPortapapeles = async () => {
@@ -37,24 +44,33 @@ export const CustomSpeedDial = ({ tooltipTitle, shareText }: { tooltipTitle?: st
             setCopiado(true);
             setTimeout(() => setCopiado(false), 1500);
         } catch (error) {
-            console.error('Error al copiar al portapapeles: ', error);
+            console.error('Error: ', error);
         };
     };
 
     const actions: ActionsType[] = [
         {
             Icon: EmailIcon,
-            tooltipTitle: 'Gmail',
+            tooltipText: 'Gmail',
             onClick: () => { }
         },
         {
             Icon: WhatsAppIcon,
-            tooltipTitle: 'WhatsApp',
-            onClick: () => window.open(`https://wa.me/?text=${shareText}`, '_blank', 'noopener,noreferrer')
+            tooltipText: 'WhatsApp',
+            onClick: () => {
+                // window.open(`https://wa.me/?text=${shareText}`, '_blank', 'noopener,noreferrer');
+                const link = document.createElement('a');
+                link.href = `https://wa.me/?text=${shareText}`;
+                link.target = '_blank';
+                link.rel = 'noopener,noreferrer';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
         },
         {
             Icon: ContentCopyIcon,
-            tooltipTitle: 'Copiar Link al portapapeles',
+            tooltipText: tooltipTitleCopyURL,
             onClick: () => copiarAlPortapapeles()
         }
     ];
@@ -90,7 +106,7 @@ export const CustomSpeedDial = ({ tooltipTitle, shareText }: { tooltipTitle?: st
                         <SpeedDialAction
                             key={index}
                             icon={<action.Icon />}
-                            slotProps={{ tooltip: { title: action.tooltipTitle, placement: 'bottom' } }}
+                            slotProps={{ tooltip: { title: action.tooltipText, placement: 'bottom' } }}
                             onClick={action.onClick}
                         />
                     ))
@@ -100,7 +116,7 @@ export const CustomSpeedDial = ({ tooltipTitle, shareText }: { tooltipTitle?: st
                 open={copiado}
                 // autoHideDuration={5000}
                 // onClose={handleClose}
-                message="Link Copiado!"
+                message={copyMessage}
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                 sx={{ top: 500 }}
             />

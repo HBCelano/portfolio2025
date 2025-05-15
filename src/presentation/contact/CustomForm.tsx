@@ -73,7 +73,7 @@ export function CustomForm({ setOpenBackdrop }: { setOpenBackdrop: Dispatch<SetS
         const message = document.getElementById('message') as HTMLInputElement;
         let isValid = true;
 
-        if (!name.value) {
+        if (!name.value || /[0-9]/.test(name.value)) {
             setInputValidation(prevInputValidation => ({
                 ...prevInputValidation,
                 nameError: true,
@@ -168,6 +168,7 @@ export function CustomForm({ setOpenBackdrop }: { setOpenBackdrop: Dispatch<SetS
                     width={50}
                     height={50}
                     alt="Logo"
+                    priority
                 />
                 <Typography
                     component="h2"
@@ -198,7 +199,7 @@ export function CustomForm({ setOpenBackdrop }: { setOpenBackdrop: Dispatch<SetS
                     fullWidth
                     placeholder={t('main.contact.form.placeholderName')}
                     autoComplete="off"
-                    autoFocus
+                    // autoFocus
                     required
                     error={inputValidation.nameError}
                     helperText={inputValidation.nameErrorMessage}

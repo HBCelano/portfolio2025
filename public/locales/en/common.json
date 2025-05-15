@@ -68,7 +68,11 @@
             "cv": {
                 "view": "View",
                 "download": "Download",
-                "shareTooltip": "Share"
+                "shareTooltip": "Share",
+                "file": "cv-english",
+                "shareText": "Hello, I am sharing the following Curriculum Vitae with you: ",
+                "copyURL": "Copy Link to Clipboard",
+                "copyMessage": "Link copied!"
             },
             "form": {
                 "nameErrorMessage": "Please enter a valid name.",

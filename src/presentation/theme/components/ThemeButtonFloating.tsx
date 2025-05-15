@@ -21,7 +21,7 @@ export const ThemeButtonFloating = () => {
                 size={'small'}
                 aria-label="ModeButton"
                 sx={{
-                    ml: 5,
+                    ml: 8,
                     width: 32,      // más chico que el default small (40px)
                     height: 32,
                     minHeight: 'auto',
