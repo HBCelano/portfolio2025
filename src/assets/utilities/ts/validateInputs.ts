@@ -1,0 +1,1 @@
+export const validateInputs = (name: FormDataEntryValue | null, email: FormDataEntryValue | null, message: FormDataEntryValue | null): boolean => (!name || /[0-9]/.test(name as string) || !email || !/\S+@\S+\.\S+/.test(email as string) || !message);
