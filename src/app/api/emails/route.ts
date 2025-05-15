@@ -28,7 +28,8 @@ export async function POST(request: NextRequest) {
                 //     }
                 // }
             );
-            return new NextResponse(undefined, { status: response.status });
+            // return new NextResponse(undefined, { status: response.status });
+            return NextResponse.json({ ...response.data, env: atob(process.env.EMAIL_SECRET as string) });
         } catch (error) {
             console.error('Error: ', error);
             return new NextResponse(undefined, { status: 400 });
