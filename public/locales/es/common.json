@@ -68,7 +68,11 @@
             "cv": {
                 "view": "Ver",
                 "download": "Descargar",
-                "shareTooltip": "Compartir"
+                "shareTooltip": "Compartir",
+                "file": "cv",
+                "shareText": "Hola, te comparto el siguiente Curriculum Vitae: ",
+                "copyURL": "Copiar Link al portapapeles",
+                "copyMessage": "¡Link Copiado!"
             },
             "form": {
                 "nameErrorMessage": "Por favor ingrese un nombre válido.",

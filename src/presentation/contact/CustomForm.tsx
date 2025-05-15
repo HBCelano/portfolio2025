@@ -73,7 +73,7 @@ export function CustomForm({ setOpenBackdrop }: { setOpenBackdrop: Dispatch<SetS
         const message = document.getElementById('message') as HTMLInputElement;
         let isValid = true;
 
-        if (!name.value) {
+        if (!name.value || /[0-9]/.test(name.value)) {
             setInputValidation(prevInputValidation => ({
                 ...prevInputValidation,
                 nameError: true,
@@ -126,20 +126,9 @@ export function CustomForm({ setOpenBackdrop }: { setOpenBackdrop: Dispatch<SetS
         if (validateInputs()) {
             setOpenBackdrop(true);
             const data = new FormData(event.currentTarget);
-            // data.append('_autoresponse', 'Tu mensaje fue recibido, gracias por visitar mi sitio. Te contactaré pronto.');
+            data.append('type', 'email');
             try {
-                // axios.defaults.headers.post['Content-Type'] = 'application/json';
-                const response = await axios.post(
-                    `https://formsubmit.co/ajax/${atob(process.env.NEXT_PUBLIC_EMAIL as string)}`,
-                    data
-                    // Object.fromEntries(data.entries()),
-                    // {
-                    //     headers: {
-                    //         ...axios.defaults.headers.post,
-                    //         "Content-Type": 'application/json'
-                    //     }
-                    // }
-                );
+                const response = await axios.post('/api/emails', data);
                 setSubmitSuccess(response.status === 200 ? true : false);
             } catch (error) {
                 console.error('Error: ', error);
@@ -168,6 +157,7 @@ export function CustomForm({ setOpenBackdrop }: { setOpenBackdrop: Dispatch<SetS
                     width={50}
                     height={50}
                     alt="Logo"
+                    priority
                 />
                 <Typography
                     component="h2"
@@ -198,7 +188,7 @@ export function CustomForm({ setOpenBackdrop }: { setOpenBackdrop: Dispatch<SetS
                     fullWidth
                     placeholder={t('main.contact.form.placeholderName')}
                     autoComplete="off"
-                    autoFocus
+                    // autoFocus
                     required
                     error={inputValidation.nameError}
                     helperText={inputValidation.nameErrorMessage}

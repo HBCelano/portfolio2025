@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 // import { dir } from 'i18next';
 // import configI18next from 'root/next-i18next.config';
 // import { Geist, Geist_Mono } from "next/font/google";
-import "@/assets/css/globals.css";
+import "@/assets/styles/globals.css";
 import '@fontsource/roboto/100.css';
 import '@fontsource/roboto/200.css';
 import '@fontsource/roboto/300.css';
