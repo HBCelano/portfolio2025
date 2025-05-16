@@ -129,7 +129,6 @@ export function CustomForm({ setOpenBackdrop }: { setOpenBackdrop: Dispatch<SetS
             data.append('type', 'email');
             try {
                 const response = await axios.post('/api/emails', data);
-                console.log(response.data);
                 setSubmitSuccess(response.status === 200 ? true : false);
             } catch (error) {
                 console.error('Error: ', error);
