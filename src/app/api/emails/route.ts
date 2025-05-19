@@ -44,7 +44,10 @@ export async function POST(request: NextRequest) {
             });
             const date = new Date().getFullYear();
             const mailOptions = {
-                from: process.env.EMAIL_ADDRESS_SECRET,
+                from: {
+                    name: 'Homero Celano - Portfolio Web',
+                    address: process.env.EMAIL_ADDRESS_SECRET as string
+                },
                 to: process.env.EMAIL_ADDRESS_TO_SECRET,
                 subject: `Nuevo mensaje de ${formData.get('name')}`,
                 html: `
