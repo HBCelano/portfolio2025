@@ -1,4 +1,4 @@
-import { type Dispatch, type SetStateAction, useState, useEffect } from 'react';
+import { type Dispatch, type SetStateAction, useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
@@ -48,6 +48,7 @@ type InputValidationType = {
 export function CustomForm({ setOpenBackdrop }: { setOpenBackdrop: Dispatch<SetStateAction<boolean>> }) {
     const { palette } = useTheme();
     const { t } = useTranslation();
+    const contactForm = useRef<HTMLFormElement>(null);
     const [inputValidation, setInputValidation] = useState<InputValidationType>({
         nameError: false,
         nameErrorMessage: '',
@@ -130,6 +131,7 @@ export function CustomForm({ setOpenBackdrop }: { setOpenBackdrop: Dispatch<SetS
             try {
                 const response = await axios.post('/api/emails', data);
                 setSubmitSuccess(response.status === 200 ? true : false);
+                if (response.status === 200) contactForm?.current?.reset();
             } catch (error) {
                 console.error('Error: ', error);
                 setSubmitSuccess(false);
@@ -169,6 +171,7 @@ export function CustomForm({ setOpenBackdrop }: { setOpenBackdrop: Dispatch<SetS
             </Box>
             <Box
                 component="form"
+                ref={contactForm}
                 noValidate
                 onSubmit={handleSubmit}
                 sx={{
@@ -206,6 +209,15 @@ export function CustomForm({ setOpenBackdrop }: { setOpenBackdrop: Dispatch<SetS
                     required
                     error={inputValidation.emailError}
                     helperText={inputValidation.emailErrorMessage}
+                    sx={{
+                        input: {
+                            '&:-webkit-autofill': {
+                                WebkitBoxShadow: 'none',
+                                WebkitTextFillColor: 'inherit',
+                                transition: 'background-color 5000s ease-in-out 0s'
+                            }
+                        }
+                    }}
                 />
                 <TextField
                     id="message"
