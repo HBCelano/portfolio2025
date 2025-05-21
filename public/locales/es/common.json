@@ -72,7 +72,8 @@
                 "file": "cv",
                 "shareText": "Hola, te comparto el siguiente Curriculum Vitae: ",
                 "copyURL": "Copiar Link al portapapeles",
-                "copyMessage": "¡Link Copiado!"
+                "copyMessage": "¡Link Copiado!",
+                "gmailSubject": "Curriculum Vitae de Homero Celano"
             },
             "form": {
                 "nameErrorMessage": "Por favor ingrese un nombre válido.",
