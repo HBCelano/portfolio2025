@@ -1,6 +1,7 @@
 'use client';
 
-import { type ComponentType, useState } from 'react';
+import { type ComponentType, useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import SpeedDial from '@mui/material/SpeedDial';
 // import SpeedDialIcon from '@mui/material/SpeedDialIcon';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
@@ -36,7 +37,15 @@ type CustomSpeedDialProps = {
 };
 
 export const CustomSpeedDial = ({ tooltipTitle, tooltipTitleCopyURL, copyMessage, shareText }: CustomSpeedDialProps) => {
-    const [copiado, setCopiado] = useState(false);
+    const { t } = useTranslation();
+    const [copiado, setCopiado] = useState<boolean>(false);
+    const [isMobile, setIsMobile] = useState<boolean>(false);
+
+    useEffect(() => {
+        const userAgent = typeof window !== 'undefined' ? navigator.userAgent : '';
+        const isMobileDevice = /Mobi|mobile|Android|iPhone|iPad|iPod/i.test(userAgent);
+        setIsMobile(isMobileDevice);
+    }, []);
 
     const copiarAlPortapapeles = async () => {
         try {
@@ -52,7 +61,20 @@ export const CustomSpeedDial = ({ tooltipTitle, tooltipTitleCopyURL, copyMessage
         {
             Icon: EmailIcon,
             tooltipText: 'Gmail',
-            onClick: () => { }
+            onClick: () => {
+                const elementA = document.createElement('a');
+                elementA.href = (isMobile
+                    ?
+                    `mailto:?subject=${encodeURIComponent(t('main.contact.cv.gmailSubject'))}&body=${shareText}`
+                    :
+                    `https://mail.google.com/mail/?view=cm&fs=1&su=${encodeURIComponent(t('main.contact.cv.gmailSubject'))}&body=${shareText}`
+                );
+                elementA.target = '_blank';
+                elementA.rel = 'noopener,noreferrer';
+                document.body.appendChild(elementA);
+                elementA.click();
+                document.body.removeChild(elementA);
+            }
         },
         {
             Icon: WhatsAppIcon,

@@ -9,7 +9,7 @@ import 'swiper/css/autoplay';
 
 const skills = [
     {
-        img: '/img/skills/html5.svg',
+        img: '/img/skills/html.svg',
         name: 'HTML'
     },
     {
@@ -29,16 +29,16 @@ const skills = [
         name: 'JavaScript'
     },
     {
-        img: '/img/skills/ts.svg',
-        name: 'TypeScript'
-    },
-    {
         img: '/img/skills/jquery.svg',
         name: 'jQuery'
     },
     {
-        img: '/img/skills/react.svg',
-        name: 'React'
+        img: '/img/skills/ts.svg',
+        name: 'TypeScript'
+    },
+    {
+        img: '/img/skills/reactjs.svg',
+        name: 'ReactJS'
     },
     {
         img: '/img/skills/nextjs.svg',
@@ -46,13 +46,25 @@ const skills = [
         theme: true
     },
     {
-        img: '/img/skills/react.svg',
+        img: '/img/skills/mui.svg',
+        name: 'MUI (Material UI)'
+    },
+    {
+        img: '/img/skills/reactjs.svg',
         name: 'React Native'
     },
     {
         img: '/img/skills/expo.svg',
         name: 'Expo',
         theme: true
+    },
+    {
+        img: '/img/skills/reactNativePaper.svg',
+        name: 'React Native Paper'
+    },
+    {
+        img: '/img/skills/nodejs.svg',
+        name: 'NodeJS'
     },
     {
         img: '/img/skills/python.svg',
