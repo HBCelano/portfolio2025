@@ -2,6 +2,7 @@
 
 import { type ComponentType, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import Box from '@mui/material/Box';
 import SpeedDial from '@mui/material/SpeedDial';
 // import SpeedDialIcon from '@mui/material/SpeedDialIcon';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
@@ -51,7 +52,7 @@ export const CustomSpeedDial = ({ tooltipTitle, tooltipTitleCopyURL, copyMessage
         try {
             await navigator.clipboard.writeText(`${window.location.origin}/pdfs/cv/cv.pdf`);
             setCopiado(true);
-            setTimeout(() => setCopiado(false), 1500);
+            setTimeout(() => setCopiado(false), 1000);
         } catch (error) {
             console.error('Error: ', error);
         };
@@ -134,14 +135,27 @@ export const CustomSpeedDial = ({ tooltipTitle, tooltipTitleCopyURL, copyMessage
                     ))
                 }
             </SpeedDial>
-            <Snackbar
-                open={copiado}
-                // autoHideDuration={5000}
-                // onClose={handleClose}
-                message={copyMessage}
-                anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-                sx={{ top: 500 }}
-            />
+            <Box component='div'>
+                <Snackbar
+                    open={copiado}
+                    // autoHideDuration={5000}
+                    // onClose={handleClose}
+                    message={copyMessage}
+                    anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+                    sx={{
+                        bottom: 32,
+                        '@media (min-width: 600px)': {
+                            bottom: 32
+                        },
+                        '& .MuiSnackbarContent-root': {
+                            width: 'auto',
+                            maxWidth: 'none',
+                            minWidth: 'unset',
+                            flexGrow: 0
+                        }
+                    }}
+                />
+            </Box>
         </>
     );
 };

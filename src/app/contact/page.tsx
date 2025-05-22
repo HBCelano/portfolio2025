@@ -23,7 +23,7 @@ import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import CloudDownloadOutlinedIcon from '@mui/icons-material/CloudDownloadOutlined';
 // import { CustomMotionImage } from "root/src/presentation/contact/CustomMotionImage";
 import { CustomSpeedDial, CustomLoader } from "@/presentation/shared/components";
-import { CustomForm } from "@/presentation/contact/CustomForm";
+import { CustomForm } from "root/src/presentation/contact/components/CustomForm";
 
 // const MotionBoxForwardRef = forwardRef<HTMLElement, MotionProps & BoxProps>((props, ref) => <Box ref={ref} {...props} />);
 // MotionBoxForwardRef.displayName = 'MotionBox';
@@ -104,7 +104,7 @@ const Contact = () => {
     );
 
     return (
-        <Box component='section' sx={{ pt: { md: 4 }, pb: 4 }}>
+        <Box component='section' sx={{ pt: { md: 4 }, pb: { md: 4 } }}>
             <Box
                 component='section'
                 className="flex max-[900px]:flex-col justify-center gap-8 xl:gap-20"

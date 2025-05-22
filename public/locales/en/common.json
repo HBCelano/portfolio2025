@@ -71,8 +71,8 @@
                 "shareTooltip": "Share",
                 "file": "cv-english",
                 "shareText": "Hello, I am sharing the following Curriculum Vitae with you: ",
-                "copyURL": "Copy Link to Clipboard",
-                "copyMessage": "Link Copied!",
+                "copyURL": "Copy link to clipboard",
+                "copyMessage": "Link copied!",
                 "gmailSubject": "Curriculum Vitae of Homero Celano"
             },
             "form": {
@@ -97,7 +97,7 @@
         }
     },
     "footer": {
-        "copyright": "All rights reserved.",
+        "copyright": "HBCelano - All rights reserved.",
         "tooltips": {
             "whatsapp": "Go to WhatsApp",
             "instagram": "Go to Instagram",
