@@ -55,7 +55,7 @@ export default function RootLayout({
             // dir={dir(lng)}
             >
                 <head>
-                    <link rel="icon" href="/img/favicon.ico" />
+                    <link rel="icon" href="/img/favicon/favicon.ico" />
                 </head>
                 <body
                 // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
