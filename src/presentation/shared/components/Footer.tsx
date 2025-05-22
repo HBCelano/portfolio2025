@@ -41,7 +41,8 @@ export const Footer = () => {
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 padding: '1rem',
-                marginTop: '.8rem',
+                paddingTop: { xs: 0, md: '1rem' },
+                marginBottom: { xs: 3, sm: 0 },
                 gap: { xs: 1, sm: 0 }
             }}
         >

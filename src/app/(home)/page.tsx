@@ -13,7 +13,7 @@ import {
     useMediaQuery,
     type BoxProps
 } from "@mui/material";
-import { CustomAvatar } from "@/presentation/home/components";
+import { CustomAvatar } from "@/presentation/home/components/CustomAvatar";
 import { CustomDialog } from "@/presentation/shared/components";
 
 // const CustomDialogControlled = ({ translate }: { translate: TFunction<"translation", undefined> }) => {
