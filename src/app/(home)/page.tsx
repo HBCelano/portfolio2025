@@ -52,7 +52,7 @@ const Home = () => {
             <Box
                 component='section'
                 className="flex max-[900px]:flex-col-reverse justify-center items-center gap-10 xl:gap-24"
-                sx={{ pt: { md: 3 } }}
+                sx={{ pt: { md: 3 }, pb: { xs: 8, md: 2 } }}
             >
                 <MotionBox
                     component={'section'}
