@@ -35,6 +35,7 @@ export async function POST(request: NextRequest) {
             // return NextResponse.json({ ...response.data, env: atob(process.env.EMAIL_SECRET as string) });
 
             const html = readFileSync(join(process.cwd(), 'src/app/api/emails/templates/email.html'), 'utf-8')
+                .replace('{{imgSrc}}', `${request.nextUrl.origin}/img/logos/hc-light.png`)
                 .replace('{{name}}', formData.get('name') as string)
                 .replace('{{email}}', formData.get('email') as string)
                 .replace('{{message}}', formData.get('message') as string)

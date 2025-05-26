@@ -155,7 +155,7 @@ export function CustomForm({ setOpenBackdrop }: { setOpenBackdrop: Dispatch<SetS
                 }}
             >
                 <Image
-                    src={palette.mode === 'dark' ? '/img/hc-dark.svg' : '/img/hc-light.svg'}
+                    src={palette.mode === 'dark' ? '/img/logos/hc-dark.svg' : '/img/logos/hc-light.svg'}
                     width={50}
                     height={50}
                     alt="Logo"

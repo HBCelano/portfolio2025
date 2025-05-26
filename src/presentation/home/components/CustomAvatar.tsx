@@ -1,9 +1,9 @@
 import Image from 'next/image';
-import AvatarImg from 'root/public/img/avatar350.png';
+import AvatarImg from 'root/public/img/home/avatar350.png';
 
 export const CustomAvatar = () => (
     <Image
-        // src="/img/avatar350.png"
+        // src="/img/home/avatar350.png"
         src={AvatarImg}
         alt="Avatar o imagen personal"
         // width={350}
@@ -19,7 +19,7 @@ export const CustomAvatar = () => (
     />
     // <div
     //     style={{
-    //         backgroundImage: "url('/img/avatar380.png')",
+    //         backgroundImage: "url('/img/home/avatar380.png')",
     //         backgroundSize: 'cover',
     //         backgroundPosition: 'center',
     //         backgroundRepeat: 'no-repeat',

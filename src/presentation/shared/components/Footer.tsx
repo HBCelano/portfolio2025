@@ -14,8 +14,8 @@ import Box, {
     from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
-// import LogoSvg from 'root/public/img/cv-footer.svg';
-import LogoSvgHC from 'root/public/img/hc.svg';
+// import LogoSvg from 'root/public/img/logos/cv-footer.svg';
+import LogoSvgHC from 'root/public/img/logos/hc.svg';
 import Instagram from '@mui/icons-material/Instagram';
 import WhatsApp from '@mui/icons-material/WhatsApp';
 import LinkedIn from '@mui/icons-material/LinkedIn';
