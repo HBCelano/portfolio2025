@@ -127,7 +127,7 @@ export const NavbarWithDrawer = () => {
                 }}
             >
                 <Image
-                    src={palette.mode === 'dark' ? '/img/hc-dark.svg' : '/img/hc-light.svg'}
+                    src={palette.mode === 'dark' ? '/img/logos/hc-dark.svg' : '/img/logos/hc-light.svg'}
                     width={45}
                     height={45}
                     alt="Logo"
@@ -189,7 +189,7 @@ export const NavbarWithDrawer = () => {
                         }}
                     >
                         <Image
-                            src='/img/hc-dark.svg'
+                            src='/img/logos/hc-dark.svg'
                             width={45}
                             height={45}
                             alt="Logo"
