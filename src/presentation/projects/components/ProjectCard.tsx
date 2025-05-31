@@ -10,6 +10,7 @@ type ProjectCardTypes = {
     title: string;
     desc?: string;
     link?: string;
+    buttonText?: string;
     visible?: boolean;
 };
 
@@ -18,10 +19,12 @@ export const ProjectCard = ({
     title,
     desc,
     link,
+    buttonText,
     visible
 }: ProjectCardTypes) => (
     <Card
-        variant="outlined"
+        variant="elevation"
+        elevation={10}
         sx={{
             maxWidth: 250,
             display: 'flex',
@@ -56,7 +59,7 @@ export const ProjectCard = ({
                     size='small'
                     variant='text'
                 >
-                    Ir al Sitio
+                    {buttonText}
                 </Button>
             </CardActions>
         )}
