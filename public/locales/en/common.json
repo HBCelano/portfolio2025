@@ -61,6 +61,89 @@
                 "title": "Skills"
             }
         },
+        "projects": {
+            "title": "Projects",
+            "buttonCard": "Go to the Site",
+            "data": [
+                {
+                    "imgSrc": "/img/projects/thesimpsons.png",
+                    "title": "The Simpsons",
+                    "desc": "Static website, just HTML and CSS.",
+                    "link": "https://hbcelano-thesimpsons.netlify.app/",
+                    "delay": 0
+                },
+                {
+                    "imgSrc": "/img/projects/contact.png",
+                    "title": "Contact Form",
+                    "desc": "Static page.",
+                    "link": "https://hbcelano-contact.netlify.app/",
+                    "delay": 200
+                },
+                {
+                    "imgSrc": "/img/projects/stock.png",
+                    "title": "Stock Control",
+                    "desc": "Static site with JS to control product stock.",
+                    "link": "https://hbcelano-stock.netlify.app/",
+                    "delay": 400
+                },
+                {
+                    "imgSrc": "/img/projects/autos.png",
+                    "title": "Car Filter",
+                    "desc": "Site to apply filter with JS.",
+                    "link": "https://hbcelano-autos.netlify.app/",
+                    "delay": 600
+                },
+                {
+                    "imgSrc": "/img/projects/clima.png",
+                    "title": "Current Weather",
+                    "desc": "Website that offers current weather filtered by region (API consumption with JS).",
+                    "link": "https://hbcelano-clima.netlify.app/",
+                    "delay": 800
+                },
+                {
+                    "imgSrc": "/img/projects/portfolio_old.png",
+                    "title": "Old Portfolio",
+                    "desc": "Static web portfolio (previous version).",
+                    "link": "https://hbcelano-portfolio.netlify.app/",
+                    "delay": 1000
+                },
+                {
+                    "imgSrc": "/img/projects/netflix.png",
+                    "title": "Movie Schedule",
+                    "desc": "Static website with HTML, CSS and JS (Mock login with JS).",
+                    "link": "https://hbcelano-peliculas.netlify.app/",
+                    "delay": 1200
+                },
+                {
+                    "imgSrc": "/img/projects/pedidos.png",
+                    "title": "Web Orders",
+                    "desc": "Dynamic Web Ordering System (PHP and MySQL for session management).",
+                    "link": "https://pedidosray-hbcelano.infinityfreeapp.com/",
+                    "delay": 1400
+                },
+                {
+                    "imgSrc": "/img/projects/helados.png",
+                    "title": "Ice cream parlor",
+                    "desc": "Web system for managing ice cream orders (PHP and MySQL).",
+                    "link": "https://helados-hbcelano.infinityfreeapp.com/",
+                    "delay": 1600
+                },
+                {
+                    "imgSrc": "/img/projects/tickets.png",
+                    "title": "Ticket Billboard",
+                    "desc": "Online ticket sales website (PHP and MySQL).",
+                    "link": "https://tickets-hbcelano.infinityfreeapp.com/",
+                    "delay": 1800
+                },
+                {
+                    "imgSrc": "/img/projects/tienda_online.png",
+                    "title": "Online Store",
+                    "desc": "Online store built with Python (Flask and PostgreSQL).",
+                    "link": "https://hbcelano.pythonanywhere.com/",
+                    "delay": 2000
+                }
+            ]
+        },
         "contact": {
             "title": "Contact",
             "body1": "Fill out the form to contact me, or access my social media channels using the buttons in the footer.",
