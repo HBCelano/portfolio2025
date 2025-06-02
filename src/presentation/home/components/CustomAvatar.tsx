@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import AvatarImg from 'root/public/img/home/avatar350.png';
+import AvatarImg from 'root/public/img/home/me350.png';
 
 export const CustomAvatar = () => (
     <Image
